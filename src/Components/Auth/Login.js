@@ -2,14 +2,55 @@ import React, { Component }  from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
-import './Register.css'
 import Paper from 'material-ui/Paper';
+import {notify} from 'react-notify-toast'
+import axios from 'axios';
+import * as constant from "../constant";
+import './Register.css'
 
 
 class Login extends Component {
-    state = {
+    constructor (props) {
+        super(props);
+    this.state = {
         email: '',
         password: ''
+    }
+}
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({[name]: value});
+    }
+
+    handleLogin = (event) => {
+    const payload = new FormData()
+    payload.set('email', this.state.email)    
+    payload.set('password', this.state.password,)
+
+        axios({
+            url: `${constant.URL}/auth/login`,
+            method: 'post',
+            data: payload,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+
+        .then((response) => {
+            localStorage.setItem('token', response.data.jwt_token);
+            console.log(response.data.jwt_token)
+            notify.show(response.data.message, 'success', 4000);
+            this.props
+            .history
+            .push('/');
+        })
+
+        .catch((error) => {
+            notify.show(error.response.data.message, 'error', 4000);
+        });
     }
 
     render(){
@@ -28,26 +69,31 @@ class Login extends Component {
             <div className="main">
                 <div className="tab-group">
                 <Link to="/register">
-                    <li className="tab active">Sign Up</li></Link>
+                    <li className="tab">Sign Up</li></Link>
                 <Link to="/login">
-                    <li className="tab">Log In</li></Link>
+                    <li className="tab active">Log In</li></Link>
                 </div>
                 <div className="inputs">
                 <Paper zDepth={2} style={divstyle}>
-                    <p class="heading">Login Here</p>
+                    <p className="heading">Login Here</p>
 
-                    <i class="material-icons">mail</i>
-                        <TextField floatingLabelText="Email" style={style} /><br />
+                    <i className="material-icons">mail</i>
+                        <TextField floatingLabelText="Email" name="email" 
+                                value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
 
-                    <i class="material-icons">lock</i>
-                        <TextField floatingLabelText="Password" style={style} /><br /><br /><br />
+                    <i className="material-icons">lock</i>
+                        <TextField floatingLabelText="Password" name="password" 
+                        value={this.state.password} style={style} onChange={this.handleInputChange} /><br /><br /><br />
 
                     <div className="buttons">
-                    <Link to="/addcategory"><button className="network" id="one">LOGIN</button></Link>
+                    <button className="network" id="one" 
+                                onClick={(event => this.handleLogin(event))}>LOGIN</button>
                     <Link to="/register"><button className="network" id="two">Cancel</button></Link>
                     
-                    <p>Don't have an account?</p>
-                    <Link to="/register" type="button" id="button">Register Now!</Link>
+                    <p>Don't have an account? <Link to="/register" type="button" id="button">Register Now!</Link>
+                    < br />< br />
+                    <Link to="" style={{color:'#1ab188', fontSize:'14px'}} 
+                                onClick={(event => this.handleResetPassword(event))}>Forgot password?</ Link></p><br />
                     </div>
 
                 </Paper><br />

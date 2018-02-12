@@ -2,18 +2,59 @@ import React, { Component }  from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
-import './Register.css'
 import Paper from 'material-ui/Paper';
+import {notify} from 'react-notify-toast'
+import axios from 'axios';
+import * as constant from "../constant";
+import './Register.css'
 
 
 class Register extends Component {
-    state = {
+    constructor (props) {
+        super(props);
+    this.state = {
         username: '',
         email: '',
-        password: ''
+        password: '',
+    }
+}
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({[name]: value});
+    } 
+
+    handleRegister = (event) => {
+      const payload = new FormData()
+      payload.set('email', this.state.email)    
+      payload.set('username', this.state.username,)
+      payload.set('password', this.state.password,)
+
+        axios({
+            url: `${constant.URL}/auth/register`,
+            method: 'post',
+            data: payload,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+
+        .then((response) => {
+            notify.show(response.data.message, 'success', 4000);
+            this.props
+            .history
+            .push('/login');
+        })
+
+        .catch((error) => {
+            console.log(error.response.data.message)
+            notify.show(error.response.data.message, 'error', 4000);
+        });
     }
 
-    render(){
+    render(){     
         let style = {
             marginLeft: 20,
             width: 323,
@@ -35,23 +76,26 @@ class Register extends Component {
                 </div>
                 <div className="inputs">
                 <Paper zDepth={2} style={divstyle}>
-                    <p class="heading">Register Here</p>
+                    <p className="heading">Register Here</p>
 
-                    <i class="material-icons">person</i>
-                    <TextField floatingLabelText="Username" style={style}/><br />
+                    <i className="material-icons">person</i>
+                    <TextField floatingLabelText="Username" name="username" 
+                                 value={this.state.username} style={style} onChange={this.handleInputChange}/><br />
 
-                    <i class="material-icons">mail</i>
-                    <TextField floatingLabelText="Email" style={style} /><br />
+                    <i className="material-icons">mail</i>
+                    <TextField floatingLabelText="Email" name="email" 
+                                value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
 
-                    <i class="material-icons">lock</i>
-                    <TextField floatingLabelText="Password" style={style} /><br /><br /><br />
+                    <i className="material-icons">lock</i>
+                    <TextField floatingLabelText="Password" name="password" 
+                                 value={this.state.password} style={style} onChange={this.handleInputChange}/><br /><br /><br />
 
                     <div className="buttons">
-                    <Link to="/login"><button className="network" id="one">Register</button></Link>
+                    <button className="network" id="one" onClick={(event => this.handleRegister(event))}
+                    >Register</button>
                     <Link to="/"><button className="network" id="two">Cancel</button></Link>
                   
-                    <p>Already have an account?</p>
-                    <Link to="/login" type="button" id="button">Login</Link>
+                    <p>Already have an account? <Link to="/login" type="button" id="button" >Login</Link></p>            <br />    
                     </div>
 
                 </Paper><br />
