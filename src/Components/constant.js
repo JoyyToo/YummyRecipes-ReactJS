@@ -1,0 +1,1 @@
+export const URL = "https://yummy-recipe-flaskapi.herokuapp.com/api/v1";
