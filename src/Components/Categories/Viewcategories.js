@@ -241,9 +241,9 @@ class Category extends Component {
                                                         id={category[key]['id']}
                                                         onClick={this.handleDeletecategory.bind(this)}
                                             />
-                                            
+
                                             <Link to={"/categories/" + category[key]['id'] + "/recipes"}><FlatButton
-                                                label="Recipes"/></Link><br/>
+                                                label="View Items"/></Link><br/>
                                         </Card>
 
                                     </MuiThemeProvider>

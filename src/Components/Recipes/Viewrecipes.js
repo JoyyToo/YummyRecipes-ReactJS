@@ -19,6 +19,7 @@ class Recipe extends Component {
             data: "",
             category_id: "",
             id: "",
+            q: "",
 
         }
     }
@@ -33,6 +34,12 @@ class Recipe extends Component {
             window.location.replace('/login')
         }
     }
+
+    handleInputChange = (event) => {
+        console.log(event)
+        this.setState({q: event});    
+
+    };
 
     handlerecipe = (props) => {
         const category_id = this.props.match.params['category_id'];
@@ -102,6 +109,34 @@ class Recipe extends Component {
             });
     };
 
+    handleSearch= (event) => {
+        const category_id = this.props.match.params['category_id'];
+        const token = window.localStorage.getItem('token');
+
+        axios({
+            url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
+            method: 'get',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+
+            .then((response) => {
+                let recipe = response.data['recipes'];
+                console.log(recipe)
+
+                this.setState({
+                        q: "",
+                        recipes: recipe,
+                });
+                
+            })
+            .catch((error) => {
+                notify.show(error.response.data.message, 'error', 4000);
+            });
+    };
+
 
     render() {
         let recipe = this.state.recipes;
@@ -137,15 +172,16 @@ class Recipe extends Component {
                                 <ContentAdd/>
                             </FloatingActionButton>
                         </Link>
-                        <SearchBar
-                          onChange={() => console.log('onChange')}
-                          onRequestSearch={() => console.log('onRequestSearch')}
-                          style={{
-                            margin: '0 auto',
-                            width: 430,
-                              float: 'right',
-                              marginRight: 75,
-                          }}
+                        <SearchBar name="q" value={this.state.q}
+                            onChange={this.handleInputChange}
+                            onRequestSearch={this.handleSearch.bind(this)}
+
+                            style={{
+                                margin: '0 auto',
+                                width: 430,
+                                float: 'right',
+                                marginRight: 75,
+                            }}
                         />
                     </div>
 
