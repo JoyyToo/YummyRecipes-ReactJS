@@ -11,6 +11,7 @@ import NewPassword from './Components/Auth/NewPassword'
 import AddCategory from './Components/Categories/Addcategory'
 import Categories from './Components/Categories/Viewcategories'
 import SingleCategory from './Components/Categories/SingleCategory'
+import SingleRecipe from './Components/Recipes/SingleRecipe'
 import AddRecipe from './Components/Recipes/Addrecipe'
 import Recipe from './Components/Recipes/Viewrecipes'
 import UpdateCategory from './Components/Categories/Updatecategory'
@@ -34,9 +35,11 @@ class App extends Component {
           <Route exact path="/categories/:id" component={SingleCategory} />
           <Route exact path="/addcategory" component={AddCategory} />
           <Route exact path="/updatecategory/:id" component={UpdateCategory} />
-          <Route exact path="/recipes" component={Recipe} />
-          <Route exact path="/addrecipe" component={AddRecipe} />
-          <Route exact path="/updaterecipe" component={UpdateRecipe} />
+          <Route exact path="/categories/:category_id/recipes" component={Recipe} />
+          <Route exact path="/categories/:category_id/addrecipe" component={AddRecipe} />
+          <Route exact path="/categories/:category_id/recipes/:id" component={UpdateRecipe} />
+          <Route exact path="/categories/:category_id/recipe/:id" component={SingleRecipe} />
+          
         </Switch>
       </div>
       </BrowserRouter>
