@@ -37,9 +37,13 @@ class Recipe extends Component {
             category_id: "",
             id: "",
 <<<<<<< HEAD
+<<<<<<< HEAD
             q: "",
 =======
 >>>>>>> [feature] Add recipe components
+=======
+            q: "",
+>>>>>>> [feature] Add search recipe functionality
 
         }
     }
@@ -74,6 +78,12 @@ class Recipe extends Component {
                 let paginationObject = response.data[0];
 =======
     }
+
+    handleInputChange = (event) => {
+        console.log(event)
+        this.setState({q: event});    
+
+    };
 
     handlerecipe = (props) => {
         const category_id = this.props.match.params['category_id'];
@@ -167,9 +177,40 @@ class Recipe extends Component {
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // handle search recipe request
     handleSearch= (event) => {
         const category_id = this.props.match.params['category_id'];
+=======
+    handleSearch= (event) => {
+        const category_id = this.props.match.params['category_id'];
+        const token = window.localStorage.getItem('token');
+
+        axios({
+            url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
+            method: 'get',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+
+            .then((response) => {
+                let recipe = response.data['recipes'];
+                console.log(recipe)
+
+                this.setState({
+                        q: "",
+                        recipes: recipe,
+                });
+                
+            })
+            .catch((error) => {
+                notify.show(error.response.data.message, 'error', 4000);
+            });
+    };
+
+>>>>>>> [feature] Add search recipe functionality
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes?q=${this.state.q}`)
@@ -227,6 +268,9 @@ class Recipe extends Component {
                             </FloatingActionButton>
                         </Link>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [feature] Add search recipe functionality
                         <SearchBar name="q" value={this.state.q}
                             onChange={this.handleInputChange}
                             onRequestSearch={this.handleSearch.bind(this)}
@@ -237,6 +281,7 @@ class Recipe extends Component {
                                 float: 'right',
                                 marginRight: 75,
                             }}
+<<<<<<< HEAD
 =======
                         <SearchBar
                           onChange={() => console.log('onChange')}
@@ -248,6 +293,8 @@ class Recipe extends Component {
                               marginRight: 75,
                           }}
 >>>>>>> [feature] Add recipe components
+=======
+>>>>>>> [feature] Add search recipe functionality
                         />
                     </div>
 
