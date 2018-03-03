@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-<<<<<<< HEAD
 import {Card, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
@@ -17,38 +16,15 @@ class Recipe extends Component {
         super(props);
         this.state = {
             pagination: "",
-=======
-import {Card, CardText,} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import {Link} from 'react-router-dom';
-import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
-import SearchBar from 'material-ui-search-bar'
-import Pagination from 'material-ui-pagination';
-
-class Recipe extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
->>>>>>> [feature] Add recipe components
             recipes: [],
             data: "",
             category_id: "",
             id: "",
-<<<<<<< HEAD
-<<<<<<< HEAD
             q: "",
-=======
->>>>>>> [feature] Add recipe components
-=======
-            q: "",
->>>>>>> [feature] Add search recipe functionality
 
         }
     }
 
-<<<<<<< HEAD
     // handle user input
     handleInputChange = (event) => {
         this.setState({q: event});    
@@ -58,59 +34,29 @@ class Recipe extends Component {
     // handle get recipe request
     handlerecipe = (page=1) => {
         const category_id = this.props.match.params['category_id'];
-=======
-
+    }
+    // mount token when page loads
     componentDidMount() {
         this.setState({
             token: window.sessionStorage.accessToken,
         });
->>>>>>> [feature] Add recipe components
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
         }
-<<<<<<< HEAD
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes?page=${page}`)
             .then((response) => {
                 let recipe = response.data[1];
                 let paginationObject = response.data[0];
-=======
-    }
-
-    handleInputChange = (event) => {
-        console.log(event)
-        this.setState({q: event});    
-
-    };
-
-    handlerecipe = (props) => {
-        const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
-
-            .then((response) => {
-                let recipe = response.data[1];
->>>>>>> [feature] Add recipe components
 
                 this.setState({
                     data: response.data,
                     recipes: recipe,
                     id: this.state.id,
                     category_id: this.state.category_id,
-<<<<<<< HEAD
                     pagination: paginationObject
-=======
->>>>>>> [feature] Add recipe components
                 })
             })
 
@@ -119,32 +65,23 @@ class Recipe extends Component {
             });
     };
 
-<<<<<<< HEAD
     // call handle recipe before mounting
-=======
->>>>>>> [feature] Add recipe components
     componentWillMount() {
         this.handlerecipe();
     }
 
-<<<<<<< HEAD
     // handle delete recipe request
-=======
->>>>>>> [feature] Add recipe components
     handleDeleterecipe = (event) => {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
-<<<<<<< HEAD
         // send DELETE request to API
         axiosInstance.delete(`category/${category_id}/recipes/${id}`)
             .then((response) => {
                 this.handlerecipe();
-=======
-        let th = this;
 
         const token = window.localStorage.getItem('token');
-
+        // send DELETE request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes/${id}`,
             method: 'delete',
@@ -156,9 +93,8 @@ class Recipe extends Component {
 
             .then((response) => {
 
-                th.handlerecipe();
+                this.handlerecipe();
 
->>>>>>> [feature] Add recipe components
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -167,25 +103,17 @@ class Recipe extends Component {
                     .history
                     .push(`/categories/${category_id}/recipes`);
             })
-<<<<<<< HEAD
-=======
-
->>>>>>> [feature] Add recipe components
             .catch((error) => {
                 notify.show(error.response, 'error', 4000);
             });
-    };
+    });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    // handle search recipe request
-    handleSearch= (event) => {
-        const category_id = this.props.match.params['category_id'];
-=======
+
     handleSearch= (event) => {
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
 
+        // send GET request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
             method: 'get',
@@ -197,7 +125,6 @@ class Recipe extends Component {
 
             .then((response) => {
                 let recipe = response.data['recipes'];
-                console.log(recipe)
 
                 this.setState({
                         q: "",
@@ -209,8 +136,6 @@ class Recipe extends Component {
                 notify.show(error.response.data.message, 'error', 4000);
             });
     };
-
->>>>>>> [feature] Add search recipe functionality
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes?q=${this.state.q}`)
@@ -226,10 +151,6 @@ class Recipe extends Component {
             });
     };
 
-    // render recipes
-=======
-
->>>>>>> [feature] Add recipe components
     render() {
         let recipe = this.state.recipes;
 
@@ -253,10 +174,6 @@ class Recipe extends Component {
         };
 
         const category_id = this.props.match.params['category_id'];
-<<<<<<< HEAD
-=======
-
->>>>>>> [feature] Add recipe components
         return (
             <div>
                 
@@ -267,10 +184,7 @@ class Recipe extends Component {
                                 <ContentAdd/>
                             </FloatingActionButton>
                         </Link>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> [feature] Add search recipe functionality
+
                         <SearchBar name="q" value={this.state.q}
                             onChange={this.handleInputChange}
                             onRequestSearch={this.handleSearch.bind(this)}
@@ -281,20 +195,6 @@ class Recipe extends Component {
                                 float: 'right',
                                 marginRight: 75,
                             }}
-<<<<<<< HEAD
-=======
-                        <SearchBar
-                          onChange={() => console.log('onChange')}
-                          onRequestSearch={() => console.log('onRequestSearch')}
-                          style={{
-                            margin: '0 auto',
-                            width: 430,
-                              float: 'right',
-                              marginRight: 75,
-                          }}
->>>>>>> [feature] Add recipe components
-=======
->>>>>>> [feature] Add search recipe functionality
                         />
                     </div>
 
@@ -315,16 +215,12 @@ class Recipe extends Component {
 
                                                 }
                                             </CardText>
-<<<<<<< HEAD
 
                                             <Link to={"/categories/" + recipe[key]['category_id'] + "/recipe/" + recipe[key]['id']}>
                                             <FlatButton label="View"
                                                         category_id={recipe[key]['category_id']}
                                                         id={recipe[key]['id']}
                                             /></Link>               
-=======
-                            
->>>>>>> [feature] Add recipe components
                                             <Link to={"/categories/" + recipe[key]['category_id'] + "/recipes/" + recipe[key]['id']}>
                                                 <FlatButton label="Edit"
                                                             id={recipe[key]['id']} desc={recipe[key]['desc']}
@@ -334,14 +230,6 @@ class Recipe extends Component {
                                                         id={recipe[key]['id']}
                                                         onClick={(event => this.handleDeleterecipe(event))}
                                             />
-<<<<<<< HEAD
-=======
-                                            <Link to={"/categories/" + recipe[key]['category_id'] + "/recipe/" + recipe[key]['id']}>
-                                            <FlatButton label="View" primary={true}
-                                                        category_id={recipe[key]['category_id']}
-                                                        id={recipe[key]['id']}
-                                            /></Link>
->>>>>>> [feature] Add recipe components
                                         </Card>
 
                                     </MuiThemeProvider>
@@ -349,10 +237,7 @@ class Recipe extends Component {
                                 </div>
                                             
                             ))}
-<<<<<<< HEAD
                             <Pagination changePage={this.handlerecipe.bind(this)} paginationObject={this.state.pagination}/>
-=======
->>>>>>> [feature] Add recipe components
                           
                     </div>
 
