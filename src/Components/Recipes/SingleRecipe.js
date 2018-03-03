@@ -136,7 +136,7 @@ class SingleRecipe extends Component {
                         {(
                             <div style={styles.card2}>
                                 <MuiThemeProvider is="nospace start">
-                                    <Card style={{height: 500}}>
+                                    <Card >
                                         <h2 style={{marginLeft: 30, paddingTop: 10}}>{recipe['name']}</h2>
                                         <p style={{marginLeft: 30, marginBottom: 30}}>Time taken: {recipe['time']}</p>
                                         <p style={{marginLeft: 30, marginBottom: 30}}>Ingridients: {recipe['ingredients']}</p>
