@@ -8,6 +8,7 @@ import axios from 'axios';
 import * as constant from "../constant";
 
 class SingleRecipe extends Component {
+    // initialize state
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +25,7 @@ class SingleRecipe extends Component {
         }
     }
 
-
+    // mount token when page loads
     componentDidMount() {
         this.setState({
             token: window.sessionStorage.accessToken,
@@ -36,11 +37,13 @@ class SingleRecipe extends Component {
         }
     }
 
+    // handle get recipe request
     handlerecipe = (props) => {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
 
         const token = window.localStorage.getItem('token');
+        // send GET request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes/${id}`,
             method: 'get',
@@ -72,14 +75,14 @@ class SingleRecipe extends Component {
     };
 
 
+    // handle delete recipe request
     handleDeleterecipe = (event) => {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
-        let th = this;
-
         const token = window.localStorage.getItem('token');
 
+        // send DELETE request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes/${id}`,
             method: 'delete',
@@ -91,7 +94,7 @@ class SingleRecipe extends Component {
 
             .then((response) => {
 
-                th.handlerecipe();
+                this.handlerecipe();
 
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
@@ -107,7 +110,7 @@ class SingleRecipe extends Component {
             });
     };
 
-
+    // render a single recipe
     render() {
         let recipe = this.state;
 

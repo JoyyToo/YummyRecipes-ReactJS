@@ -10,6 +10,7 @@ import '../Auth/Register.css'
 
 
 class UpdateRecipe extends Component {
+    // initialize state
     state = {
         name: '',
         time: '',
@@ -19,6 +20,7 @@ class UpdateRecipe extends Component {
         category_id: '',
     }
 
+    // handle user input
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -26,6 +28,7 @@ class UpdateRecipe extends Component {
         this.setState({[name]: value});
     };
 
+    // mount recipes and token when page loads
     componentDidMount() {
         this.getRecipe();
 
@@ -38,11 +41,13 @@ class UpdateRecipe extends Component {
         }
     }
 
+    // handle get recipe request
     getRecipe() {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
 
         const token = window.localStorage.getItem('token');
+        // send GET request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes/${id}`,
             method: 'get',
@@ -55,7 +60,6 @@ class UpdateRecipe extends Component {
 
             .then((response) => {
                 let recipe = response.data['recipes'];
-                console.log(recipe)
 
                 this.setState({
                     id: id,
@@ -74,6 +78,7 @@ class UpdateRecipe extends Component {
             });
     }
 
+    // handle edit recipe request
     handleEditrecipe = () => {
         const payload = new FormData();
         payload.set('name', this.state.name)    
@@ -81,8 +86,8 @@ class UpdateRecipe extends Component {
         payload.set('ingredients', this.state.ingredients,)
         payload.set('procedure', this.state.procedure,)
 
-
         const token = window.localStorage.getItem('token');
+        // send PUT request to API
         axios({
             url: `${constant.URL}/category/${this.state.category_id}/recipes/${this.state.id}`,
             method: 'put',
@@ -106,6 +111,7 @@ class UpdateRecipe extends Component {
             });
     };
 
+    // render edit recipe form
     render(){
         let style = {
             marginLeft: 20,

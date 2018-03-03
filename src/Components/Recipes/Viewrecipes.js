@@ -12,6 +12,7 @@ import SearchBar from 'material-ui-search-bar'
 import Pagination from 'material-ui-pagination';
 
 class Recipe extends Component {
+    // initialize state
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +25,7 @@ class Recipe extends Component {
         }
     }
 
-
+    // mount token when page loads
     componentDidMount() {
         this.setState({
             token: window.sessionStorage.accessToken,
@@ -35,15 +36,17 @@ class Recipe extends Component {
         }
     }
 
+    // handle user input
     handleInputChange = (event) => {
-        console.log(event)
         this.setState({q: event});    
 
     };
 
+    // handle get recipe request
     handlerecipe = (props) => {
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
+        // send GET request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes`,
             method: 'get',
@@ -70,18 +73,18 @@ class Recipe extends Component {
             });
     };
 
+    // call handle recipe before mounting
     componentWillMount() {
         this.handlerecipe();
     }
 
+    // handle delete recipe request
     handleDeleterecipe = (event) => {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
-        let th = this;
-
         const token = window.localStorage.getItem('token');
-
+        // send DELETE request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes/${id}`,
             method: 'delete',
@@ -93,7 +96,7 @@ class Recipe extends Component {
 
             .then((response) => {
 
-                th.handlerecipe();
+                this.handlerecipe();
 
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
@@ -109,10 +112,12 @@ class Recipe extends Component {
             });
     };
 
+    // handle search recipe request
     handleSearch= (event) => {
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
 
+        // send GET request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
             method: 'get',
@@ -124,7 +129,6 @@ class Recipe extends Component {
 
             .then((response) => {
                 let recipe = response.data['recipes'];
-                console.log(recipe)
 
                 this.setState({
                         q: "",
@@ -137,7 +141,7 @@ class Recipe extends Component {
             });
     };
 
-
+    // render recipes
     render() {
         let recipe = this.state.recipes;
 

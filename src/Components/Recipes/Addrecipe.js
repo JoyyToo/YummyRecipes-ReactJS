@@ -10,6 +10,7 @@ import '../Auth/Register.css'
 
 
 class AddRecipe extends Component {
+    // initialize state
     state = {
         name: '',
         time: '',
@@ -19,6 +20,7 @@ class AddRecipe extends Component {
         category_id: '',
     }
 
+    // handle user input
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -26,6 +28,7 @@ class AddRecipe extends Component {
         this.setState({[name]: value});
     }
 
+    // mount token when page loads
     componentDidMount() {
         this.setState({
             token: window.sessionStorage.accessToken,
@@ -36,6 +39,7 @@ class AddRecipe extends Component {
         }
     }
 
+    // handle add recipe request
     handleAddrecipe = (event) => {
     const category_id = this.props.match.params['category_id'];
     const payload = new FormData()
@@ -45,7 +49,7 @@ class AddRecipe extends Component {
     payload.set('procedure', this.state.procedure,)
         
     const token = window.localStorage.getItem('token')
-   
+        // send POST request to API
         axios({
             url: `${constant.URL}/category/${category_id}/recipes`,
             method: 'post',
@@ -68,10 +72,9 @@ class AddRecipe extends Component {
         });
     }
 
-
+    // render add recipe form
     render(){
         const id = this.state.id
-        console.log(id)
         const category_id = this.props.match.params['category_id'];
 
         let style = {
