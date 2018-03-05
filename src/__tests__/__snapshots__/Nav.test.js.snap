@@ -7,11 +7,35 @@ exports[`Nav component renders properly 1`] = `
   <Link
     className="navbar-brand"
     replace={false}
+<<<<<<< HEAD
+=======
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+>>>>>>> [Feature 155119223]:
     to="/"
   >
     <h2>
       YUMMY
+<<<<<<< HEAD
                   
+=======
+      <a
+        className="navbar-brand"
+        style={
+          Object {
+            "color": "white",
+            "float": "right",
+            "marginRight": 20,
+          }
+        }
+      >
+        Hello
+         Guest
+      </a>
+>>>>>>> [Feature 155119223]:
     </h2>
   </Link>
 </div>
