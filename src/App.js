@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/resetpassword" component={ResetPassword} />
-          <Route exact path="/newpassword" component={NewPassword} />
+          <Route exact path="/newpassword/:token" component={NewPassword} />
           <Route exact path="/categories" component={Categories} />
           <Route exact path="/addcategory" component={AddCategory} />
           <Route exact path="/updatecategory" component={UpdateCategory} />

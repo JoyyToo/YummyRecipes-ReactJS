@@ -10,6 +10,7 @@ import './Register.css'
 
 
 class Register extends Component {
+    // Initialize state
     constructor (props) {
         super(props);
     this.state = {
@@ -19,6 +20,7 @@ class Register extends Component {
     }
 }
 
+    // handle user input
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -26,12 +28,14 @@ class Register extends Component {
         this.setState({[name]: value});
     } 
 
+    // handle register user request
     handleRegister = (event) => {
       const payload = new FormData()
       payload.set('email', this.state.email)    
       payload.set('username', this.state.username,)
       payload.set('password', this.state.password,)
-
+        
+        // send POST request to API
         axios({
             url: `${constant.URL}/auth/register`,
             method: 'post',
@@ -42,6 +46,7 @@ class Register extends Component {
         })
 
         .then((response) => {
+            localStorage.setItem('username', this.state.username)
             notify.show(response.data.message, 'success', 4000);
             this.props
             .history
@@ -49,11 +54,11 @@ class Register extends Component {
         })
 
         .catch((error) => {
-            console.log(error.response.data.message)
             notify.show(error.response.data.message, 'error', 4000);
         });
     }
 
+    // render register form
     render(){     
         let style = {
             marginLeft: 20,
@@ -87,7 +92,7 @@ class Register extends Component {
                                 value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
 
                     <i className="material-icons">lock</i>
-                    <TextField floatingLabelText="Password" name="password" 
+                    <TextField floatingLabelText="Password" type="password" name="password" 
                                  value={this.state.password} style={style} onChange={this.handleInputChange}/><br /><br /><br />
 
                     <div className="buttons">
