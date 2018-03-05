@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders properly 1`] = `
+<MuiThemeProvider>
+  <div
+    className="main"
+  >
+    <div
+      className="tab-group"
+    >
+      <Link
+        replace={false}
+        to="/register"
+      >
+        <li
+          className="tab"
+        >
+          Sign Up
+        </li>
+      </Link>
+      <Link
+        replace={false}
+        to="/login"
+      >
+        <li
+          className="tab active"
+        >
+          Log In
+        </li>
+      </Link>
+    </div>
+    <div
+      className="inputs"
+    >
+      <Paper
+        circle={false}
+        rounded={true}
+        style={
+          Object {
+            "margin": "auto",
+            "paddingLeft": 20,
+            "textAlign": "left",
+            "width": 430,
+          }
+        }
+        transitionEnabled={true}
+        zDepth={2}
+      >
+        <p
+          className="heading"
+        >
+          Login Here
+        </p>
+        <i
+          className="material-icons"
+        >
+          mail
+        </i>
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Email"
+          fullWidth={false}
+          multiLine={false}
+          name="email"
+          onChange={[Function]}
+          rows={1}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 323,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <i
+          className="material-icons"
+        >
+          lock
+        </i>
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Password"
+          fullWidth={false}
+          multiLine={false}
+          name="password"
+          onChange={[Function]}
+          rows={1}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 323,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <br />
+        <br />
+        <div
+          className="buttons"
+        >
+          <button
+            className="network"
+            id="one"
+            onClick={[Function]}
+          >
+            LOGIN
+          </button>
+          <Link
+            replace={false}
+            to="/register"
+          >
+            <button
+              className="network"
+              id="two"
+            >
+              Cancel
+            </button>
+          </Link>
+          <p>
+            Don't have an account? 
+            <Link
+              id="button"
+              replace={false}
+              to="/register"
+              type="button"
+            >
+              Register Now!
+            </Link>
+            <br />
+            <br />
+            <Link
+              onClick={[Function]}
+              replace={false}
+              style={
+                Object {
+                  "color": "#1ab188",
+                  "fontSize": "14px",
+                }
+              }
+              to=""
+            >
+              Forgot password?
+            </Link>
+          </p>
+          <br />
+        </div>
+      </Paper>
+      <br />
+    </div>
+  </div>
+</MuiThemeProvider>
+`;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing component reanders properly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="intro-message"
+  >
+    <h1>
+      Yummy recipes
+    </h1>
+     
+    <br />
+    <h2>
+      Makes your cooking easier and better
+    </h2>
+    <hr
+      className="intro-divider"
+    />
+  </div>
+  <div
+    className="list-inline intro-social-buttons"
+  >
+    <div
+      className="list-inline-item"
+    >
+      <div>
+        <Link
+          replace={false}
+          to="/login"
+        >
+          <button
+            className="network-name"
+          >
+            LOG IN
+          </button>
+        </Link>
+        <Link
+          replace={false}
+          to="/register"
+        >
+          <button
+            className="network-name"
+          >
+            SIGN UP
+          </button>
+        </Link>
+      </div>
+    </div>
+  </div>
+  <div
+    className="copyright"
+  >
+    <p>
+      Copyright © Yummy Recipes 2018. All Rights Reserved
+    </p>
+  </div>
+</div>
+`;
