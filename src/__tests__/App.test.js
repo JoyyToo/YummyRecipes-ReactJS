@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import { shallow} from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
+=======
+import { shallow, mount } from 'enzyme';
+import toJson, { shallowToJson } from 'enzyme-to-json';
+>>>>>>> [Feature 155119223]:
 
 import App from '../App';
 
@@ -24,7 +29,11 @@ describe('App component', () => {
     });
 
     it('renders the routes', () => {
+<<<<<<< HEAD
         expect(wrapper.find('Route').length).toEqual(13);
+=======
+        expect(wrapper.find('Route').length).toEqual(12);
+>>>>>>> [Feature 155119223]:
     });
 
     it('renders the switch', () => {

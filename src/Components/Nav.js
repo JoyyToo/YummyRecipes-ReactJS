@@ -1,13 +1,36 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
+import axios from 'axios';
+import * as constant from "./constant";
 import './Landing.css'
 
 class Nav extends Component {
 
     handleLogout = (event) => {
-        window.localStorage.clear()
-        notify.show('You logged out successfully.', 'success', 4000)
+        const token = window.localStorage.getItem('token')
+
+        axios({
+            url: `${constant.URL}/auth/logout`,
+            method: 'post',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+
+        .then((response) => {   
+            window.localStorage.clear()      
+            console.log(response.data.message)
+            notify.show(response.data.message, 'success', 4000)
+            this.props
+            .history
+            .push('/');
+        })
+        .catch((error) => {
+            console.log(error.response.data.message)
+            notify.show(error.response.data.message, 'error', 4000);
+        });
     }
     
     render() {
