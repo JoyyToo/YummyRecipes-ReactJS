@@ -9,13 +9,14 @@ import {notify} from 'react-notify-toast'
 import axios from 'axios';
 import * as constant from "../constant";
 import SearchBar from 'material-ui-search-bar'
-import Pagination from 'material-ui-pagination';
+import Pagination from '../Pagination/Pagination'
 
 class Recipe extends Component {
     // initialize state
     constructor(props) {
         super(props);
         this.state = {
+            pagination: "",
             recipes: [],
             data: "",
             category_id: "",
@@ -43,12 +44,12 @@ class Recipe extends Component {
     };
 
     // handle get recipe request
-    handlerecipe = (props) => {
+    handlerecipe = (page=1) => {
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
         // send GET request to API
         axios({
-            url: `${constant.URL}/category/${category_id}/recipes`,
+            url: `${constant.URL}/category/${category_id}/recipes?page=${page}`,
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -59,12 +60,14 @@ class Recipe extends Component {
 
             .then((response) => {
                 let recipe = response.data[1];
+                let paginationObject = response.data[0];
 
                 this.setState({
                     data: response.data,
                     recipes: recipe,
                     id: this.state.id,
                     category_id: this.state.category_id,
+                    pagination: paginationObject
                 })
             })
 
@@ -228,6 +231,7 @@ class Recipe extends Component {
                                 </div>
                                             
                             ))}
+                            <Pagination changePage={this.handlerecipe.bind(this)} paginationObject={this.state.pagination}/>
                           
                     </div>
 

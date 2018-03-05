@@ -75,7 +75,6 @@ class Category extends Component {
     // components mounted when page is loaded
     componentWillMount() {
         this.handlecategory()
-        this.nextPage()
     }
 
     // handle delete category request
@@ -140,32 +139,6 @@ class Category extends Component {
                 notify.show(error.response.data.message, 'error', 4000);
             });
     };
-
-    // handle get next page request
-    nextPage= (page=1) => {
-        const token = window.localStorage.getItem('token');
-        // send GET request to API
-        axios({
-            url: `${constant.URL}/category?page=${page}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
-
-            .then((response) => {
-                let paginationObject = response.data[0];
-
-                this.setState({...this.state, pagination: paginationObject})
-            })
-
-            .catch((error) => {
-                notify.show(error.response.data.message, 'error', 4000);
-            });
-    };
-
 
     // render the categories
     render() {
@@ -251,7 +224,7 @@ class Category extends Component {
                                 </div>
                                                                                         
                             ))}
-                            <Pagination style={{color:"red"}} changePage={this.handlecategory.bind(this)} paginationObject={this.state.pagination}/>
+                            <Pagination changePage={this.handlecategory.bind(this)} paginationObject={this.state.pagination}/>
                           
                     </div>
 
