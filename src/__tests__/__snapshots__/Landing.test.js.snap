@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`Landing component renders properly 1`] = `
+=======
+exports[`Landing component reanders properly 1`] = `
+>>>>>>> [Feature 155119223]:
 <div
   className="App"
 >

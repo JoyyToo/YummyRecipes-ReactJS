@@ -121,7 +121,11 @@ exports[`Register component renders properly 1`] = `
               "width": 323,
             }
           }
+<<<<<<< HEAD
           type="password"
+=======
+          type="text"
+>>>>>>> [Feature 155119223]:
           underlineShow={true}
           value=""
         />

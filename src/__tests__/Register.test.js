@@ -1,13 +1,20 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+<<<<<<< HEAD
 import { shallowToJson } from 'enzyme-to-json';
 import sinon from 'sinon'
+=======
+import toJson, { shallowToJson } from 'enzyme-to-json';
+>>>>>>> [Feature 155119223]:
 
 import Register from '../Components/Auth/Register'
 
 describe('Register component', () => {
     const wrapper = shallow(<Register />);
+<<<<<<< HEAD
     const preventDefault = jest.fn();
+=======
+>>>>>>> [Feature 155119223]:
   
     it('renders properly', () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -19,9 +26,14 @@ describe('Register component', () => {
     });
 
     it('it returns props correctly', () =>{
+<<<<<<< HEAD
         const component = shallow(<Register name="app" />);
         expect(component.instance().props.name).toBe('app')
         expect(component.instance().handleRegister( {preventDefault} ))    
+=======
+        const component = shallow(<Register name="app"/>);
+        expect(component.instance().props.name).toBe('app')
+>>>>>>> [Feature 155119223]:
     });
 
     it('has initial state', () => {
@@ -43,6 +55,7 @@ describe('Register component', () => {
         expect(wrapper.find('[name="password"]')).toHaveLength(1);
     });
 
+<<<<<<< HEAD
     it('contains MuiThemeProvider', () => {
         expect(wrapper.find('MuiThemeProvider')).toHaveLength(1);
     });
@@ -78,5 +91,42 @@ describe('Register component', () => {
     it('contains button', () => {
         expect(wrapper.find('button')).toHaveLength(2);
     }); 
+=======
+    it('renders component in MuiThemeProvider', () => {
+        expect(wrapper.find('MuiThemeProvider')).toHaveLength(1);
+    });
+
+    it('renders component in divs', () => {
+        expect(wrapper.find('div')).toHaveLength(4);
+    });
+
+    it('renders component in Link', () => {
+        expect(wrapper.find('Link')).toHaveLength(4);
+    });
+
+    it('renders component in li', () => {
+        expect(wrapper.find('li')).toHaveLength(2);
+    });
+
+    it('renders component in Paper', () => {
+        expect(wrapper.find('Paper')).toHaveLength(1);
+    });
+
+    it('renders component in p', () => {
+        expect(wrapper.find('p')).toHaveLength(2);
+    });
+
+    it('renders component in i', () => {
+        expect(wrapper.find('i')).toHaveLength(3);
+    });
+
+    it('renders component in TextField ', () => {
+        expect(wrapper.find('TextField')).toHaveLength(3);
+    });
+
+    it('renders component in button', () => {
+        expect(wrapper.find('button')).toHaveLength(2);
+    });
+>>>>>>> [Feature 155119223]:
 
 })
