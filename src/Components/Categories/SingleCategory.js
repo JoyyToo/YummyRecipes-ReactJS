@@ -4,12 +4,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-<<<<<<< HEAD
 import axiosInstance from '../Constants/Axioscall';
-=======
-import axios from 'axios';
-import * as constant from "../constant";
->>>>>>> [Feature 155119223]:
 
 class SingleCategory extends Component {
     // initialize state
@@ -26,51 +21,19 @@ class SingleCategory extends Component {
         }
     }
 
-<<<<<<< HEAD
     // handle get category request
     handlecategory = (event) => {
         const id = this.props.match.params['id'];
-=======
-
-    // mount token when page loads
-    componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
-        this.handlecategory();
->>>>>>> [Feature 155119223]:
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
         }
-<<<<<<< HEAD
 
         // send GET request to API
         axiosInstance.get(`category/${id}`)
 
         .then((response) => {
             let categories = response.data['category'];
-=======
-    }
-
-    // handle get category request
-    handlecategory = (event) => {
-        const id = this.props.match.params['id'];
-
-        const token = window.localStorage.getItem('token');
-        // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        }).then((response) => {
-            let categories = response.data['category'];
-
->>>>>>> [Feature 155119223]:
             this.setState({
                 date_created: categories['date_created'],
                 date_modified: categories['date_modified'],
@@ -87,7 +50,6 @@ class SingleCategory extends Component {
 
     // handle delete category request
     handleDeletecategory = (event) => {
-<<<<<<< HEAD
         let id = event.currentTarget.getAttribute('id');
 
         // send DELETE request to API
@@ -95,28 +57,6 @@ class SingleCategory extends Component {
 
             .then((response) => {
                 this.handlecategory();
-=======
-
-        let id = event.currentTarget.getAttribute('id');
-
-        let th = this;
-
-        const token = window.localStorage.getItem('token');
-        // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
-            .then((response) => {
-
-                th.handlecategory();
-
->>>>>>> [Feature 155119223]:
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -131,13 +71,10 @@ class SingleCategory extends Component {
             });
     };
 
-<<<<<<< HEAD
     // mount get category component on page load
     componentDidMount() {
         this.handlecategory();
     }
-=======
->>>>>>> [Feature 155119223]:
 
     // render a single category
     render() {
@@ -189,11 +126,7 @@ class SingleCategory extends Component {
                                         />
 
                                         <Link to={"/categories/" + category['id'] + "/recipes"}><FlatButton
-<<<<<<< HEAD
                                                 label="RECIPES"/></Link><br/>
-=======
-                                                label="View Items"/></Link><br/>
->>>>>>> [Feature 155119223]:
                                     </Card>
 
                                 </MuiThemeProvider>
