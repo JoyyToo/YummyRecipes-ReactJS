@@ -13,7 +13,6 @@ class NewPassword extends Component {
     constructor (props) {
         super(props);
     this.state = {
-        token: '',
         newpassword: '',
     }
 }
@@ -26,39 +25,37 @@ class NewPassword extends Component {
     } 
 
     handleNewPassword = (event) => {
-        const payload = new FormData()
-        payload.set('token', this.state.token)  
-        payload.set('newpassword', this.state.newpassword)  
+        const payload = new FormData() 
+        payload.set('newpassword', this.state.newpassword)
 
-            const token = this.state
+            const token = this.props.match.params.token;
 
-            axios.post(`http://127.0.0.1:5000/api/v1/auth/new-password/${token}`, payload)
-            // axios({
-            //     url: 'http://127.0.0.1:5000/api/v1/auth/new-password/{token}',
-            //     method: 'post',
-            //     data: payload,
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data',
-            //     }
-            // })
+            axios({
+                url: `http://127.0.0.1:5000/api/v1/auth/new-password/${token}`,
+                method: 'post',
+                data: payload,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            })
     
             .then((response) => {
                 {
-                    console.log(response.data)
                     notify.show(response.data.message, 'success', 4000);
                     this.props
-                    .history;
+                    .history
+                    .push('/login')
                 }
             
                 
             })
     
-            .catch((error) => {
-                
+            .catch((error) => {              
                 notify.show(error.response.data.message, 'error', 4000);
                
             });
         }
+
     render() {
         let style = {
             marginLeft: 20,
@@ -66,6 +63,7 @@ class NewPassword extends Component {
           };
         let divstyle = {
             width: 430,
+            marginTop: 300,
             margin: 'auto',
             textAlign: 'left',
             paddingLeft: 20,
@@ -75,9 +73,7 @@ class NewPassword extends Component {
             <div className="main">
                 <div className="inputs">
                 <Paper zDepth={2} style={divstyle}>
-
-                        <TextField floatingLabelText="Token" name="token" 
-                                value={this.state.token} style={style} onChange={this.handleInputChange}/><br />
+                <p className="heading">New Password Here</p>
 
                         <TextField floatingLabelText="New Password" name="newpassword" 
                                 value={this.state.newpassword} style={style} onChange={this.handleInputChange}/><br />

@@ -30,7 +30,7 @@ class Nav extends Component {
                 { !Accesstoken ? (
                     ' Guest'
                 ) : (
-                    ' ERER'//IF TOKEN
+                    ' ' + localStorage.getItem('username')
                 )}
             </a>
             </h2>

@@ -1,6 +1,9 @@
 import React, { Component }  from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
@@ -10,14 +13,17 @@ import './Register.css'
 
 
 class Login extends Component {
+    // initialize state
     constructor (props) {
         super(props);
     this.state = {
         email: '',
-        password: ''
+        password: '',
+        open: false,
     }
 }
 
+    // handle user input
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -25,11 +31,13 @@ class Login extends Component {
         this.setState({[name]: value});
     }
 
+    // handle login request
     handleLogin = (event) => {
     const payload = new FormData()
     payload.set('email', this.state.email)    
     payload.set('password', this.state.password,)
-
+        
+        // send POST request to API
         axios({
             url: `${constant.URL}/auth/login`,
             method: 'post',
@@ -41,7 +49,6 @@ class Login extends Component {
 
         .then((response) => {
             localStorage.setItem('token', response.data.jwt_token);
-            console.log(response.data.jwt_token)
             notify.show(response.data.message, 'success', 4000);
             this.props
             .history
@@ -53,6 +60,47 @@ class Login extends Component {
         });
     }
 
+    // handle reset password request
+    handleResetPassword = (event) => {
+        const payload = new FormData()
+        payload.set('email', this.state.email)    
+    
+            // send POST request to API
+            axios({
+                url: `${constant.URL}/auth/reset-password`,
+                method: 'post',
+                data: payload,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
+            })
+    
+            .then((response) => {
+                {
+                    notify.show(response.data.message, 'success', 4000);
+                    this.props
+                    .history
+                    .push('/newpassword')
+                }               
+            })
+    
+            .catch((error) => {         
+                notify.show(error.response.data.message, 'error', 4000);
+               
+            });
+        }
+
+    // handle open modal
+    handleOpen = () => {
+        this.setState({open: true});
+      };
+    
+    // handle close modal
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
+    // render login form
     render(){
         let style = {
             marginLeft: 20,
@@ -63,9 +111,37 @@ class Login extends Component {
             margin: 'auto',
             textAlign: 'left',
             paddingLeft: 20,
-        }
+        };
+        const actions = [
+            <FlatButton
+              label="Cancel"
+              primary={true}
+              onClick={this.handleClose}
+            />,
+            <FlatButton
+              label="Submit"
+              primary={true}
+              keyboardFocused={true}
+              onClick={this.handleResetPassword.bind(this)}
+            />,
+          ];
         return (
             <MuiThemeProvider>
+        <Dialog
+          title="Reset Password"
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
+          <TextField
+            hintText="Email"
+            name="email"
+            onChange={this.handleInputChange.bind(this)}
+            floatingLabelText="Email"
+        />
+
+        </Dialog>
             <div className="main">
                 <div className="tab-group">
                 <Link to="/register">
@@ -82,7 +158,7 @@ class Login extends Component {
                                 value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
 
                     <i className="material-icons">lock</i>
-                        <TextField floatingLabelText="Password" name="password" 
+                        <TextField floatingLabelText="Password" type="password" name="password" 
                         value={this.state.password} style={style} onChange={this.handleInputChange} /><br /><br /><br />
 
                     <div className="buttons">
@@ -92,8 +168,8 @@ class Login extends Component {
                     
                     <p>Don't have an account? <Link to="/register" type="button" id="button">Register Now!</Link>
                     < br />< br />
-                    <Link to="" style={{color:'#1ab188', fontSize:'14px'}} 
-                                onClick={(event => this.handleResetPassword(event))}>Forgot password?</ Link></p><br />
+                    <button style={{color:'#1ab188', fontSize:'14px'}} 
+                                onClick={(event => this.handleOpen(event))}>Forgot password?</ button></p><br />
                     </div>
 
                 </Paper><br />
