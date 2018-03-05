@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category component renders properly 1`] = `
+<div>
+  <MuiThemeProvider>
+    <div>
+      <Link
+        replace={false}
+        to="/addcategory"
+      >
+        <FloatingActionButton
+          disabled={false}
+          mini={false}
+          secondary={true}
+          style={
+            Object {
+              "marginLeft": 20,
+            }
+          }
+          zDepth={2}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+      </Link>
+      <SearchBar
+        closeIcon={
+          <NavigationClose
+            color="#9e9e9e"
+          />
+        }
+        dataSource={Array []}
+        dataSourceConfig={
+          Object {
+            "text": "text",
+            "value": "value",
+          }
+        }
+        disabled={false}
+        hintText="Search"
+        name="q"
+        onChange={[Function]}
+        onRequestSearch={[Function]}
+        searchIcon={
+          <ActionSearch
+            color="#9e9e9e"
+          />
+        }
+        spellCheck={false}
+        style={
+          Object {
+            "float": "right",
+            "margin": "0 auto",
+            "marginRight": 75,
+            "width": 430,
+          }
+        }
+        value=""
+      />
+    </div>
+    <div />
+  </MuiThemeProvider>
+</div>
+`;
+
+exports[`SingleCategory component renders properly 1`] = `
+<div>
+  <MuiThemeProvider>
+    <div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "margin": 5,
+            "padding": 10,
+            "position": "relative",
+            "width": 450,
+          }
+        }
+      >
+        <MuiThemeProvider
+          is="nospace start"
+        >
+          <Card
+            expandable={false}
+            expanded={null}
+            initiallyExpanded={false}
+          >
+            <h2
+              style={
+                Object {
+                  "marginLeft": 30,
+                  "paddingTop": 10,
+                }
+              }
+            />
+            <p
+              style={
+                Object {
+                  "marginBottom": 30,
+                  "marginLeft": 30,
+                }
+              }
+            />
+            <CardText>
+              <div>
+                <p
+                  style={
+                    Object {
+                      "marginLeft": 15,
+                    }
+                  }
+                >
+                  <i>
+                    Created:
+                  </i>
+                   
+                </p>
+                <p
+                  style={
+                    Object {
+                      "marginLeft": 15,
+                    }
+                  }
+                >
+                  <i>
+                    Modified:
+                  </i>
+                   
+                </p>
+              </div>
+            </CardText>
+            <Link
+              replace={false}
+              to="/updatecategory/"
+            >
+              <FlatButton
+                desc=""
+                disabled={false}
+                fullWidth={false}
+                id=""
+                label="Edit"
+                labelPosition="after"
+                labelStyle={Object {}}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={true}
+                secondary={false}
+              />
+            </Link>
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              id=""
+              label="Delete"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+              style={
+                Object {
+                  "color": "red",
+                }
+              }
+            />
+            <Link
+              replace={false}
+              to="/categories//recipes"
+            >
+              <FlatButton
+                disabled={false}
+                fullWidth={false}
+                label="View Items"
+                labelPosition="after"
+                labelStyle={Object {}}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={false}
+                secondary={false}
+              />
+            </Link>
+            <br />
+          </Card>
+        </MuiThemeProvider>
+      </div>
+    </div>
+  </MuiThemeProvider>
+</div>
+`;
