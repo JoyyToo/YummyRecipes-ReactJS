@@ -3,6 +3,9 @@
 exports[`Login component renders properly 1`] = `
 <MuiThemeProvider>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> [chore] Add tests
   <Dialog
     actions={
       Array [
@@ -59,8 +62,11 @@ exports[`Login component renders properly 1`] = `
       underlineShow={true}
     />
   </Dialog>
+<<<<<<< HEAD
 =======
 >>>>>>> [Feature 155119223]:
+=======
+>>>>>>> [chore] Add tests
   <div
     className="main"
   >
@@ -213,7 +219,7 @@ exports[`Login component renders properly 1`] = `
               "width": 323,
             }
           }
-          type="text"
+          type="password"
           underlineShow={true}
           value=""
         />
@@ -255,6 +261,7 @@ exports[`Login component renders properly 1`] = `
             <br />
             <br />
 <<<<<<< HEAD
+<<<<<<< HEAD
             <button
               onClick={[Function]}
 =======
@@ -262,12 +269,17 @@ exports[`Login component renders properly 1`] = `
               onClick={[Function]}
               replace={false}
 >>>>>>> [Feature 155119223]:
+=======
+            <button
+              onClick={[Function]}
+>>>>>>> [chore] Add tests
               style={
                 Object {
                   "color": "#1ab188",
                   "fontSize": "14px",
                 }
               }
+<<<<<<< HEAD
 <<<<<<< HEAD
             >
               Forgot password?
@@ -278,6 +290,11 @@ exports[`Login component renders properly 1`] = `
               Forgot password?
             </Link>
 >>>>>>> [Feature 155119223]:
+=======
+            >
+              Forgot password?
+            </button>
+>>>>>>> [chore] Add tests
           </p>
           <br />
         </div>
