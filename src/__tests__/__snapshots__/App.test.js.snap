@@ -27,6 +27,7 @@ exports[`App component renders properly 1`] = `
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
+<<<<<<< HEAD
         path="/newpassword/:token"
 =======
         path="/resetpassword"
@@ -40,6 +41,9 @@ exports[`App component renders properly 1`] = `
 =======
         path="/newpassword"
 >>>>>>> [Feature 155119223]:
+=======
+        path="/newpassword/:token"
+>>>>>>> [chore] Add tests
       />
       <Route
         component={[Function]}
@@ -82,23 +86,37 @@ exports[`App component renders properly 1`] = `
         path="/updatecategory/:id"
       />
       <Route
-        component={Object {}}
+        component={[Function]}
         exact={true}
-        path="/recipes"
->>>>>>> [Feature 155119223]:
+        path="/categories/:category_id/recipes"
       />
       <Route
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
-        path="/categories/:category_id/recipes/:id"
-=======
-        path="/addrecipe"
+        path="/recipes"
 >>>>>>> [Feature 155119223]:
+=======
+        path="/categories/:category_id/addrecipe"
+>>>>>>> [chore] Add tests
       />
       <Route
         component={[Function]}
         exact={true}
+<<<<<<< HEAD
+<<<<<<< HEAD
+        path="/categories/:category_id/recipes/:id"
+=======
+        path="/addrecipe"
+>>>>>>> [Feature 155119223]:
+=======
+        path="/categories/:category_id/recipes/:id"
+>>>>>>> [chore] Add tests
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+<<<<<<< HEAD
 <<<<<<< HEAD
         path="/categories/:category_id/recipe/:id"
       />
@@ -107,6 +125,9 @@ exports[`App component renders properly 1`] = `
 =======
         path="/updaterecipe"
 >>>>>>> [Feature 155119223]:
+=======
+        path="/categories/:category_id/recipe/:id"
+>>>>>>> [chore] Add tests
       />
     </Switch>
   </div>

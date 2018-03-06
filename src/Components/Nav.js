@@ -8,29 +8,8 @@ import './Landing.css'
 class Nav extends Component {
 
     handleLogout = (event) => {
-        const token = window.localStorage.getItem('token')
-
-        axios({
-            url: `${constant.URL}/auth/logout`,
-            method: 'post',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
-        .then((response) => {   
-            window.localStorage.clear()      
-            console.log(response.data.message)
-            notify.show(response.data.message, 'success', 4000)
-            this.props
-            .history
-            .push('/');
-        })
-        .catch((error) => {
-            console.log(error.response.data.message)
-            notify.show(error.response.data.message, 'error', 4000);
-        });
+        window.localStorage.clear()
+        notify.show('You logged out successfully.', 'success', 4000)
     }
     
     render() {
