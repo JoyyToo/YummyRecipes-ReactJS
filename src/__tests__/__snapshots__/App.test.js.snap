@@ -129,6 +129,9 @@ exports[`App component renders properly 1`] = `
         path="/categories/:category_id/recipe/:id"
 >>>>>>> [chore] Add tests
       />
+      <Route
+        component={[Function]}
+      />
     </Switch>
   </div>
 </BrowserRouter>

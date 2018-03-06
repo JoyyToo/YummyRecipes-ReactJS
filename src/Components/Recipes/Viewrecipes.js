@@ -82,19 +82,9 @@ class Recipe extends Component {
 
         const token = window.localStorage.getItem('token');
         // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.delete(`category/${category_id}/recipes/${id}`)
             .then((response) => {
-
                 this.handlerecipe();
-
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -111,26 +101,15 @@ class Recipe extends Component {
 
     handleSearch= (event) => {
         const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
 
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.get(`category/${category_id}/recipes?q=${this.state.q}`)
             .then((response) => {
                 let recipe = response.data['recipes'];
-
                 this.setState({
                         q: "",
                         recipes: recipe,
-                });
-                
+                });   
             })
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);

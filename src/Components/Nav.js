@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "./constant";
 import './Landing.css'
 
 class Nav extends Component {
