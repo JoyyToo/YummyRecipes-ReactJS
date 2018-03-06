@@ -2,6 +2,62 @@
 
 exports[`Login component renders properly 1`] = `
 <MuiThemeProvider>
+  <Dialog
+    actions={
+      Array [
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          label="Cancel"
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+        <FlatButton
+          disabled={false}
+          fullWidth={false}
+          keyboardFocused={true}
+          label="Submit"
+          labelPosition="after"
+          labelStyle={Object {}}
+          onClick={[Function]}
+          onKeyboardFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onTouchStart={[Function]}
+          primary={true}
+          secondary={false}
+      />,
+      ]
+    }
+    autoDetectWindowHeight={true}
+    autoScrollBodyContent={false}
+    modal={false}
+    onRequestClose={[Function]}
+    open={false}
+    repositionOnUpdate={true}
+    title="Reset Password"
+  >
+    <TextField
+      disabled={false}
+      floatingLabelFixed={false}
+      floatingLabelText="Email"
+      fullWidth={false}
+      hintText="Email"
+      multiLine={false}
+      name="email"
+      onChange={[Function]}
+      rows={1}
+      type="text"
+      underlineShow={true}
+    />
+  </Dialog>
   <div
     className="main"
   >
@@ -96,7 +152,7 @@ exports[`Login component renders properly 1`] = `
               "width": 323,
             }
           }
-          type="text"
+          type="password"
           underlineShow={true}
           value=""
         />
@@ -136,19 +192,17 @@ exports[`Login component renders properly 1`] = `
             </Link>
             <br />
             <br />
-            <Link
+            <button
               onClick={[Function]}
-              replace={false}
               style={
                 Object {
                   "color": "#1ab188",
                   "fontSize": "14px",
                 }
               }
-              to=""
             >
               Forgot password?
-            </Link>
+            </button>
           </p>
           <br />
         </div>

@@ -26,12 +26,7 @@ exports[`App component renders properly 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/resetpassword"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/newpassword"
+        path="/newpassword/:token"
       />
       <Route
         component={[Function]}
@@ -54,19 +49,24 @@ exports[`App component renders properly 1`] = `
         path="/updatecategory/:id"
       />
       <Route
-        component={Object {}}
+        component={[Function]}
         exact={true}
-        path="/recipes"
+        path="/categories/:category_id/recipes"
       />
       <Route
         component={[Function]}
         exact={true}
-        path="/addrecipe"
+        path="/categories/:category_id/addrecipe"
       />
       <Route
         component={[Function]}
         exact={true}
-        path="/updaterecipe"
+        path="/categories/:category_id/recipes/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:category_id/recipe/:id"
       />
     </Switch>
   </div>

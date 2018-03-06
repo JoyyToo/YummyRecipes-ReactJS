@@ -26,14 +26,8 @@ describe('Login component', () => {
         expect(wrapper.state().password).toEqual('');
     });
 
-    it('changes state', () => {
-        wrapper.setState({ email: 'user@mail.com', password: 'password' });
-        expect(wrapper.find('[name="email"]').props().value).toEqual('user@mail.com');
-        expect(wrapper.find('[name="password"]').props().value).toEqual('password');
-    });
-
     it('has the correct form fields', () => {
-        expect(wrapper.find('[name="email"]')).toHaveLength(1);
+        expect(wrapper.find('[name="email"]')).toHaveLength(2);
         expect(wrapper.find('[name="password"]')).toHaveLength(1);
     });
 
@@ -58,7 +52,7 @@ describe('Login component', () => {
     });
 
     it('renders component in Link', () => {
-        expect(wrapper.find('Link')).toHaveLength(5);
+        expect(wrapper.find('Link')).toHaveLength(4);
     });
 
     it('renders component in Paper', () => {
@@ -70,11 +64,11 @@ describe('Login component', () => {
     });
 
     it('renders component in TextField ', () => {
-        expect(wrapper.find('TextField')).toHaveLength(2);
+        expect(wrapper.find('TextField')).toHaveLength(3);
     });
 
     it('renders component in button', () => {
-        expect(wrapper.find('button')).toHaveLength(2);
+        expect(wrapper.find('button')).toHaveLength(3);
     });
 
 })

@@ -233,9 +233,9 @@ class Category extends Component {
             </div>
             
 
-        )
+        )        
     }
-
+    
 };
 
 export default Category;

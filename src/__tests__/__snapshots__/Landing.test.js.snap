@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Landing component reanders properly 1`] = `
+exports[`Landing component renders properly 1`] = `
 <div
   className="App"
 >
