@@ -6,8 +6,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 import SearchBar from 'material-ui-search-bar'
 import Pagination from '../Pagination/Pagination'
 
@@ -26,17 +25,6 @@ class Recipe extends Component {
         }
     }
 
-    // mount token when page loads
-    componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
-    }
-
     // handle user input
     handleInputChange = (event) => {
         this.setState({q: event});    
@@ -47,17 +35,12 @@ class Recipe extends Component {
     handlerecipe = (page=1) => {
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
+        if (!token) {
+            window.location.replace('/login')
+        }
+
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes?page=${page}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
-
+        axiosInstance.get(`category/${category_id}/recipes?page=${page}`)
             .then((response) => {
                 let recipe = response.data[1];
                 let paginationObject = response.data[0];
@@ -86,21 +69,10 @@ class Recipe extends Component {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
-        const token = window.localStorage.getItem('token');
         // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.delete(`category/${category_id}/recipes/${id}`)
             .then((response) => {
-
                 this.handlerecipe();
-
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -109,7 +81,6 @@ class Recipe extends Component {
                     .history
                     .push(`/categories/${category_id}/recipes`);
             })
-
             .catch((error) => {
                 notify.show(error.response, 'error', 4000);
             });
@@ -118,26 +89,15 @@ class Recipe extends Component {
     // handle search recipe request
     handleSearch= (event) => {
         const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
 
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes?q=${this.state.q}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.get(`category/${category_id}/recipes?q=${this.state.q}`)
             .then((response) => {
                 let recipe = response.data['recipes'];
-
                 this.setState({
                         q: "",
                         recipes: recipe,
-                });
-                
+                });   
             })
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);
@@ -168,7 +128,6 @@ class Recipe extends Component {
         };
 
         const category_id = this.props.match.params['category_id'];
-
         return (
             <div>
                 

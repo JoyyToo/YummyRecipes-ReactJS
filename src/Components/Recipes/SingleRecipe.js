@@ -4,8 +4,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 
 class SingleRecipe extends Component {
     // initialize state
@@ -27,36 +26,22 @@ class SingleRecipe extends Component {
 
     // mount token when page loads
     componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
         this.handlerecipe();
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
     }
 
     // handle get recipe request
     handlerecipe = (props) => {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
-
         const token = window.localStorage.getItem('token');
+        if (!token) {
+            window.location.replace('/login')
+        }
+
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes/${id}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
-
+        axiosInstance.get(`category/${category_id}/recipes/${id}`)
             .then((response) => {
                 let recipe = response.data['recipes'];
-
                 this.setState({
                     date_created: recipe['date_created'],
                     date_modified: recipe['date_modified'],
@@ -80,22 +65,10 @@ class SingleRecipe extends Component {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
-        const token = window.localStorage.getItem('token');
-
         // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.delete(`category/${category_id}/recipes/${id}`)
             .then((response) => {
-
                 this.handlerecipe();
-
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id

@@ -4,8 +4,7 @@ import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 import '../Auth/Register.css'
 
 
@@ -28,39 +27,19 @@ class UpdateRecipe extends Component {
         this.setState({[name]: value});
     };
 
-    // mount recipes and token when page loads
-    componentDidMount() {
-        this.getRecipe();
-
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
-    }
-
     // handle get recipe request
     getRecipe() {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
-
         const token = window.localStorage.getItem('token');
+        if (!token) {
+            window.location.replace('/login')
+        }
+
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes/${id}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
-
+        axiosInstance.get(`category/${category_id}/recipes/${id}`)
             .then((response) => {
                 let recipe = response.data['recipes'];
-
                 this.setState({
                     id: id,
                     category_id: category_id,
@@ -68,11 +47,8 @@ class UpdateRecipe extends Component {
                     time: recipe['time'],
                     ingredients: recipe['ingredients'],
                     procedure: recipe['procedure'],
-                    
-
                 })
             })
-
             .catch((error) => {
                 notify.show(error.response, 'error', 4000);
             });
@@ -86,18 +62,8 @@ class UpdateRecipe extends Component {
         payload.set('ingredients', this.state.ingredients,)
         payload.set('procedure', this.state.procedure,)
 
-        const token = window.localStorage.getItem('token');
         // send PUT request to API
-        axios({
-            url: `${constant.URL}/category/${this.state.category_id}/recipes/${this.state.id}`,
-            method: 'put',
-            data: payload,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.put(`category/${this.state.category_id}/recipes/${this.state.id}`, payload)
             .then((response) => {
                 notify.show(response.data.message, 'success', 4000);
                 this.props
@@ -111,6 +77,11 @@ class UpdateRecipe extends Component {
             });
     };
 
+    // mount recipes and when page loads
+    componentDidMount() {
+        this.getRecipe();
+    }
+    
     // render edit recipe form
     render(){
         let style = {

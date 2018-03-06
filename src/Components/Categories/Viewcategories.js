@@ -6,10 +6,9 @@ import {Card, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
 import SearchBar from 'material-ui-search-bar'
 import Pagination from '../Pagination/Pagination'
+import axiosInstance from '../Constants/Axioscall';
 
 class Category extends Component {
     // initialize state
@@ -25,36 +24,19 @@ class Category extends Component {
         }
     }
 
-    // mount token when page loads
-    componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
-    }
-
     // handle user input
     handleInputChange = (event) => {
-            this.setState({q: event});    
-    
+        this.setState({q: event});       
     };
 
     // handle get category request
     handlecategory = (page=1) => {
         const token = window.localStorage.getItem('token');
+        if (!token) {
+            window.location.replace('/login')
+        }
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category?page=${page}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
+        axiosInstance.get(`category?page=${page}`)
 
             .then((response) => {
                 let category = response.data[1];
@@ -66,7 +48,6 @@ class Category extends Component {
                     pagination: paginationObject         
                 })
             })
-
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);
             });
@@ -79,26 +60,13 @@ class Category extends Component {
 
     // handle delete category request
     handleDeletecategory = (event) => {
-
         let id = event.currentTarget.getAttribute('id');
 
-        let th = this;
-
-        const token = window.localStorage.getItem('token');
         // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
+        axiosInstance.delete(`category/${id}`)
 
             .then((response) => {
-
-                th.handlecategory();
-
+                this.handlecategory();
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -107,7 +75,6 @@ class Category extends Component {
                     .history
                     .push('/categories');
             })
-
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);
             });
@@ -115,20 +82,10 @@ class Category extends Component {
 
     // handle search category request
     handleSearch= (event) => {
-
-        const token = window.localStorage.getItem('token');
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category?q=${this.state.q}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
+        axiosInstance.get(`category?q=${this.state.q}`)
 
             .then((response) => {
-
                 let category = response.data['categories'];
                 this.setState({
                         q: "",
@@ -147,11 +104,6 @@ class Category extends Component {
         let style = {
             marginLeft: 20,
         };
-        const pagestyle = {
-            color: 'red',
-            marginTop: 400,
-        }
-
         const styles = {
             card2: {
                 position: 'relative',

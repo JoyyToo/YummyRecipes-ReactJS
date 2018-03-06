@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Notification from 'react-notify-toast'
 import './App.css';
 import Navbar from './Components/Nav'
+import {Link} from 'react-router-dom';
 import Landing from './Components/Landing'
 import Register from './Components/Auth/Register'
 import Login from './Components/Auth/Login'
@@ -16,6 +17,13 @@ import Recipe from './Components/Recipes/Viewrecipes'
 import UpdateCategory from './Components/Categories/Updatecategory'
 import UpdateRecipe from './Components/Recipes/Updaterecipe'
 
+const NotFound = () => (
+  <div style={{textAlign: 'center'}}>
+  <h1>Oops</h1>
+      <h2 >Page Not Found, 404. Sorry, there is nothing here.</h2>
+        Visit our <button><Link to="/" >HOMEPAGE</Link></button>
+      </div>
+);
 
 class App extends Component {
   render() {
@@ -37,6 +45,7 @@ class App extends Component {
           <Route exact path="/categories/:category_id/addrecipe" component={AddRecipe} />
           <Route exact path="/categories/:category_id/recipes/:id" component={UpdateRecipe} />
           <Route exact path="/categories/:category_id/recipe/:id" component={SingleRecipe} />
+          <Route component={NotFound} />
           
         </Switch>
       </div>

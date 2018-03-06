@@ -1,6 +1,9 @@
 .App {
     text-align: center;
 }
+p{
+  font-family: 'Josefin Slab', serif;
+}
 
 .intro-message>h1 {
   margin-top: 200px;

@@ -4,8 +4,7 @@ import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 import '../Auth/Register.css'
 
 
@@ -30,9 +29,6 @@ class AddRecipe extends Component {
 
     // mount token when page loads
     componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
@@ -41,36 +37,29 @@ class AddRecipe extends Component {
 
     // handle add recipe request
     handleAddrecipe = (event) => {
-    const category_id = this.props.match.params['category_id'];
-    const payload = new FormData()
-    payload.set('name', this.state.name)    
-    payload.set('time', this.state.time,)
-    payload.set('ingredients', this.state.ingredients,)
-    payload.set('procedure', this.state.procedure,)
+        const category_id = this.props.match.params['category_id'];
+        const payload = new FormData()
+        payload.set('name', this.state.name)    
+        payload.set('time', this.state.time,)
+        payload.set('ingredients', this.state.ingredients,)
+        payload.set('procedure', this.state.procedure,)
         
-    const token = window.localStorage.getItem('token')
-        // send POST request to API
-        axios({
-            url: `${constant.URL}/category/${category_id}/recipes`,
-            method: 'post',
-            data: payload,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
-        .then((response) => {
-            notify.show(response.data.message, 'success', 4000);
-            this.props
-            .history
-            .push(`/categories/${category_id}/recipes`);
-        })
-
-        .catch((error) => {
-            notify.show(error.response.data.message, 'error', 4000);
-        });
-    }
+        const token = window.localStorage.getItem('token')
+        if (!token) {
+            window.location.replace('/login')
+        }
+            // send POST request to API
+            axiosInstance.post(`category/${category_id}/recipes`, payload)
+            .then((response) => {
+                notify.show(response.data.message, 'success', 4000);
+                this.props
+                .history
+                .push(`/categories/${category_id}/recipes`);
+            })
+            .catch((error) => {
+                notify.show(error.response.data.message, 'error', 4000);
+            });
+        }
 
     // render add recipe form
     render(){

@@ -4,8 +4,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 
 class SingleCategory extends Component {
     // initialize state
@@ -22,36 +21,19 @@ class SingleCategory extends Component {
         }
     }
 
-
-    // mount token when page loads
-    componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
-        this.handlecategory();
+    // handle get category request
+    handlecategory = (event) => {
+        const id = this.props.match.params['id'];
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
         }
-    }
 
-    // handle get category request
-    handlecategory = (event) => {
-        const id = this.props.match.params['id'];
-
-        const token = window.localStorage.getItem('token');
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
+        axiosInstance.get(`category/${id}`)
 
-        }).then((response) => {
+        .then((response) => {
             let categories = response.data['category'];
-
             this.setState({
                 date_created: categories['date_created'],
                 date_modified: categories['date_modified'],
@@ -68,26 +50,13 @@ class SingleCategory extends Component {
 
     // handle delete category request
     handleDeletecategory = (event) => {
-
         let id = event.currentTarget.getAttribute('id');
 
-        let th = this;
-
-        const token = window.localStorage.getItem('token');
         // send DELETE request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'delete',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
+        axiosInstance.delete(`category/${id}`)
 
             .then((response) => {
-
-                th.handlecategory();
-
+                this.handlecategory();
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -102,6 +71,10 @@ class SingleCategory extends Component {
             });
     };
 
+    // mount get category component on page load
+    componentDidMount() {
+        this.handlecategory();
+    }
 
     // render a single category
     render() {

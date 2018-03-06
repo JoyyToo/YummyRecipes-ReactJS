@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import '../Auth/Register.css'
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 
 
 class AddCategory extends Component {
@@ -26,9 +25,6 @@ class AddCategory extends Component {
 
     // mount token when page loads
     componentDidMount() {
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
@@ -41,25 +37,18 @@ class AddCategory extends Component {
     payload.set('name', this.state.name)    
     payload.set('desc', this.state.desc,)
     const token = window.localStorage.getItem('token')
+    if (!token) {
+        window.location.replace('/login')
+    }
         
         // send POST request to API
-        axios({
-            url: `${constant.URL}/category`,
-            method: 'post',
-            data: payload,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.post('category', payload)
         .then((response) => {
             notify.show(response.data.message, 'success', 4000);
             this.props
             .history
             .push('/categories');
         })
-
         .catch((error) => {
             notify.show(error.response.data.message, 'error', 4000);
         });

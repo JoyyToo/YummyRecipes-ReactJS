@@ -68,6 +68,9 @@ exports[`App component renders properly 1`] = `
         exact={true}
         path="/categories/:category_id/recipe/:id"
       />
+      <Route
+        component={[Function]}
+      />
     </Switch>
   </div>
 </BrowserRouter>

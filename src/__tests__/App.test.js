@@ -24,7 +24,7 @@ describe('App component', () => {
     });
 
     it('renders the routes', () => {
-        expect(wrapper.find('Route').length).toEqual(12);
+        expect(wrapper.find('Route').length).toEqual(13);
     });
 
     it('renders the switch', () => {

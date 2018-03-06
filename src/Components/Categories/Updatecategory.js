@@ -5,8 +5,7 @@ import {Link} from 'react-router-dom';
 import '../Auth/Register.css'
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
+import axiosInstance from '../Constants/Axioscall';
 
 
 class UpdateCategory extends Component {
@@ -29,46 +28,25 @@ class UpdateCategory extends Component {
         this.setState({[name]: value});
     };
 
-    // mount category and token when page loads
-    componentDidMount() {
-        this.getCategory();
-
-        this.setState({
-            token: window.sessionStorage.accessToken,
-        });
+    // handle get category request
+    getCategory() {
+        const id = this.props.match.params['id'];
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
         }
-    }
-
-    // handle get category request
-    getCategory() {
-        const id = this.props.match.params['id'];
-
-        const token = window.localStorage.getItem('token');
+        
         // send GET request to API
-        axios({
-            url: `${constant.URL}/category/${id}`,
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-
-        })
+        axiosInstance.get(`category/${id}`)
 
             .then((response) => {
                 let category = response.data['category'];
-
                 this.setState({
                     id: id,
                     name: category['name'],
                     desc: category['desc']
-
                 })
             })
-
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);
             });
@@ -79,31 +57,24 @@ class UpdateCategory extends Component {
         const payload = new FormData();
         payload.set('name', this.state.name);
         payload.set('desc', this.state.desc);
-
-
-        const token = window.localStorage.getItem('token');
+        
         // send PUT request to API
-        axios({
-            url: `${constant.URL}/category/${this.state.id}`,
-            method: 'put',
-            data: payload,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-
+        axiosInstance.put(`category/${this.state.id}`, payload)
             .then((response) => {
                 notify.show(response.data.message, 'success', 4000);
                 this.props
                     .history
                     .push('/categories');
             })
-
             .catch((error) => {
                 notify.show(error.response.data.message, 'error', 4000);
             });
     };
+
+    // mount category and token when page loads
+    componentDidMount() {
+        this.getCategory();
+    }
 
     // render update category form
     render() {

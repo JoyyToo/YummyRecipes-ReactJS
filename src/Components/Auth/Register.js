@@ -4,9 +4,8 @@ import TextField  from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
 import './Register.css'
+import axiosInstance from '../Constants/Axioscall';
 
 
 class Register extends Component {
@@ -34,16 +33,8 @@ class Register extends Component {
       payload.set('email', this.state.email)    
       payload.set('username', this.state.username,)
       payload.set('password', this.state.password,)
-        
-        // send POST request to API
-        axios({
-            url: `${constant.URL}/auth/register`,
-            method: 'post',
-            data: payload,
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
-        })
+
+        axiosInstance.post('auth/register', payload)
 
         .then((response) => {
             localStorage.setItem('username', this.state.username)
