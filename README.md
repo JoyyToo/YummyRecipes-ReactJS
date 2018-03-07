@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ca3832209c0d42729582f2d621b58af0)](https://www.codacy.com/app/JoyyToo/YummyRecipes-ReactJS?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JoyyToo/YummyRecipes-ReactJS&amp;utm_campaign=Badge_Grade)
+
 # Yummy Recipes React
 
 Yummy Recipes application using react library that allows a user do the following:
