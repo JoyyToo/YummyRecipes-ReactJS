@@ -168,7 +168,12 @@ class Recipe extends Component {
 
                                                 }
                                             </CardText>
-                            
+
+                                            <Link to={"/categories/" + recipe[key]['category_id'] + "/recipe/" + recipe[key]['id']}>
+                                            <FlatButton label="View"
+                                                        category_id={recipe[key]['category_id']}
+                                                        id={recipe[key]['id']}
+                                            /></Link>               
                                             <Link to={"/categories/" + recipe[key]['category_id'] + "/recipes/" + recipe[key]['id']}>
                                                 <FlatButton label="Edit"
                                                             id={recipe[key]['id']} desc={recipe[key]['desc']}
@@ -178,11 +183,6 @@ class Recipe extends Component {
                                                         id={recipe[key]['id']}
                                                         onClick={(event => this.handleDeleterecipe(event))}
                                             />
-                                            <Link to={"/categories/" + recipe[key]['category_id'] + "/recipe/" + recipe[key]['id']}>
-                                            <FlatButton label="View" primary={true}
-                                                        category_id={recipe[key]['category_id']}
-                                                        id={recipe[key]['id']}
-                                            /></Link>
                                         </Card>
 
                                     </MuiThemeProvider>

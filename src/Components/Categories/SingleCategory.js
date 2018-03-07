@@ -126,7 +126,7 @@ class SingleCategory extends Component {
                                         />
 
                                         <Link to={"/categories/" + category['id'] + "/recipes"}><FlatButton
-                                                label="View Items"/></Link><br/>
+                                                label="RECIPES"/></Link><br/>
                                     </Card>
 
                                 </MuiThemeProvider>

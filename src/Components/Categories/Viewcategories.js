@@ -168,7 +168,7 @@ class Category extends Component {
                                             />
 
                                             <Link to={"/categories/" + category[key]['id'] + "/recipes"}><FlatButton
-                                                label="View Items"/></Link><br/>
+                                                label="RECIPES"/></Link><br/>
                                         </Card>
 
                                     </MuiThemeProvider>

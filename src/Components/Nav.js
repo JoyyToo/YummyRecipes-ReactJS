@@ -16,29 +16,19 @@ class Nav extends Component {
         return (
             
             <div className="container">
-            <Link to="/" className="navbar-brand" style={{ textDecoration: 'none' }}><h2>YUMMY
+            <Link to="/" className="navbar-brand" ><h2>YUMMY
 
             { !Accesstoken ? (
                         ''
                     ) : (
 
-                        <Link to="/categories" className="navbar-brand" style={{ float: 'right', marginRight: 40, textDecoration: 'none' }}
+                        <Link to="/categories" className="navbar-brand" style={{ float: 'right', marginRight: 40}}
                          >CATEGORIES
-                        <Link to="/" className="navbar-brand" style={{ float: 'right', marginRight: 40,  marginLeft: 30,  textDecoration: 'none' }}
+                        <Link to="/" className="navbar-brand" style={{ float: 'right', marginRight: 40,  marginLeft: 30 }}
                               onClick={(event => this.handleLogout(event))} >LOGOUT</Link></Link>
 
-                    )}
-
-            <a className="navbar-brand" style={{ float: 'right',  marginRight: 20, color: 'white'}}>           
-                Hello
-                { !Accesstoken ? (
-                    ' Guest'
-                ) : (
-                    ' ' + localStorage.getItem('username')
-                )}
-            </a>
-            </h2>
-            </Link>
+                    )}            </h2>
+                    </Link>
 
             </div>
         )

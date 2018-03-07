@@ -67,13 +67,25 @@ p{
   background-color: rgba(20, 20, 20, 0);
   opacity: .8;
   align-content: right !important; 
-
+  text-decoration: none;
 }
 
 .navbar-brand h2 {
   color: white;
 }
+
+#navone {
+  float: 'right';
+  margin-right: 30%;
+}
+
+#navtwo {
+  float: 'right';
+  margin-right: 30%;
+  margin-left: 40%;
+  
+}
 .container {
   background-color: rgba(20, 20, 20, 0);
-  margin-left: 100px; 
+  margin-left: 40px; 
 }
