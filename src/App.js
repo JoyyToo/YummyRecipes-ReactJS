@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Notification from 'react-notify-toast'
 import './App.css';
 import Navbar from './Components/Nav'
-import {Link} from 'react-router-dom';
+import NotFound from './Components/Constants/PagenotFound'
 import Landing from './Components/Landing'
 import Register from './Components/Auth/Register'
 import Login from './Components/Auth/Login'
@@ -16,14 +16,6 @@ import AddRecipe from './Components/Recipes/Addrecipe'
 import Recipe from './Components/Recipes/Viewrecipes'
 import UpdateCategory from './Components/Categories/Updatecategory'
 import UpdateRecipe from './Components/Recipes/Updaterecipe'
-
-const NotFound = () => (
-  <div style={{textAlign: 'center'}}>
-  <h1>Oops</h1>
-      <h2 >Page Not Found, 404. Sorry, there is nothing here.</h2>
-        Visit our <button><Link to="/" >HOMEPAGE</Link></button>
-      </div>
-);
 
 class App extends Component {
   render() {
