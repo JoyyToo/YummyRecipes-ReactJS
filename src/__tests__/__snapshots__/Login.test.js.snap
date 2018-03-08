@@ -117,6 +117,7 @@ exports[`Login component renders properly 1`] = `
           Login Here
         </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div
           className="text"
         >
@@ -176,48 +177,57 @@ exports[`Login component renders properly 1`] = `
 =======
         <i
           className="material-icons"
+=======
+        <div
+          className="text"
+>>>>>>> [chore] Add tests
         >
-          mail
-        </i>
-        <TextField
-          disabled={false}
-          floatingLabelFixed={false}
-          floatingLabelText="Email"
-          fullWidth={false}
-          multiLine={false}
-          name="email"
-          onChange={[Function]}
-          rows={1}
-          style={
-            Object {
-              "marginLeft": 20,
-              "width": 323,
+          <i
+            className="material-icons"
+          >
+            mail
+          </i>
+          <TextField
+            disabled={false}
+            floatingLabelFixed={false}
+            floatingLabelText="Email"
+            fullWidth={false}
+            multiLine={false}
+            name="email"
+            onChange={[Function]}
+            rows={1}
+            style={
+              Object {
+                "marginLeft": 20,
+                "width": 323,
+              }
             }
-          }
-          type="text"
-          underlineShow={true}
-          value=""
-        />
-        <br />
-        <i
-          className="material-icons"
-        >
-          lock
-        </i>
-        <TextField
-          disabled={false}
-          floatingLabelFixed={false}
-          floatingLabelText="Password"
-          fullWidth={false}
-          multiLine={false}
-          name="password"
-          onChange={[Function]}
-          rows={1}
-          style={
-            Object {
-              "marginLeft": 20,
-              "width": 323,
+            type="text"
+            underlineShow={true}
+            value=""
+          />
+          <br />
+          <i
+            className="material-icons"
+          >
+            lock
+          </i>
+          <TextField
+            disabled={false}
+            floatingLabelFixed={false}
+            floatingLabelText="Password"
+            fullWidth={false}
+            multiLine={false}
+            name="password"
+            onChange={[Function]}
+            rows={1}
+            style={
+              Object {
+                "marginLeft": 20,
+                "width": 323,
+              }
             }
+<<<<<<< HEAD
           }
           type="password"
           underlineShow={true}
@@ -227,6 +237,16 @@ exports[`Login component renders properly 1`] = `
         <br />
         <br />
 >>>>>>> [Feature 155119223]:
+=======
+            type="password"
+            underlineShow={true}
+            value=""
+          />
+          <br />
+          <br />
+          <br />
+        </div>
+>>>>>>> [chore] Add tests
         <div
           className="buttons"
         >

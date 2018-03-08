@@ -8,6 +8,7 @@ exports[`Nav component renders properly 1`] = `
     className="navbar-brand"
     replace={false}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     style={
       Object {
@@ -15,10 +16,13 @@ exports[`Nav component renders properly 1`] = `
       }
     }
 >>>>>>> [Feature 155119223]:
+=======
+>>>>>>> [chore] Add tests
     to="/"
   >
     <h2>
       YUMMY
+<<<<<<< HEAD
 <<<<<<< HEAD
                   
 =======
@@ -36,6 +40,9 @@ exports[`Nav component renders properly 1`] = `
          Guest
       </a>
 >>>>>>> [Feature 155119223]:
+=======
+                  
+>>>>>>> [chore] Add tests
     </h2>
   </Link>
 </div>
