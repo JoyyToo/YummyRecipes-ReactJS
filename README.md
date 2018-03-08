@@ -50,3 +50,7 @@ npm test
 | /recipes/{id} | GET | Gets a single recipe|TRUE
 | /recipe/{id} | PUT | Updates a single recipe|TRUE
 | /recipe/{id} | DELETE | Deletes a single recipe|TRUE
+
+## The app is live here
+
+https://yummyrecipesreact.herokuapp.com/
