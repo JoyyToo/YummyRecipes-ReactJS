@@ -19,8 +19,9 @@ describe('Register component', () => {
     });
 
     it('it returns props correctly', () =>{
-        const component = shallow(<Register name="app"/>);
+        const component = shallow(<Register name="app" />);
         expect(component.instance().props.name).toBe('app')
+        expect(component.instance().handleRegister( {preventDefault} ))    
     });
 
     it('has initial state', () => {
