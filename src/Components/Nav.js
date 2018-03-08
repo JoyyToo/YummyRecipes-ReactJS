@@ -9,33 +9,27 @@ class Nav extends Component {
         window.localStorage.clear()
         notify.show('You logged out successfully.', 'success', 4000)
     }
-
+    
     render() {
         const Accesstoken = window.localStorage.token
 
         return (
             
             <div className="container">
-            <Link to="/" className="navbar-brand" style={{ textDecoration: 'none' }}><h2>YUMMY
+            <Link to="/" className="navbar-brand" ><h2>YUMMY
 
             { !Accesstoken ? (
                         ''
                     ) : (
-                        <Link to="/" className="navbar-brand" style={{ float: 'right', marginRight: 40, textDecoration: 'none' }}
-                        onClick={(event => this.handleLogout(event))} >LOGOUT</Link>
-                    )}
 
-            <a className="navbar-brand" style={{ float: 'right',  marginRight: 20, color: 'white'}}>           
-                Hello
-                { !Accesstoken ? (
-                    ' Guest'
-                ) : (
-                    ' ' + localStorage.getItem('username')
-                )}
-            </a>
-            </h2>
-            </Link>
-            
+                        <Link to="/categories" className="navbar-brand" style={{ float: 'right', marginRight: 40}}
+                         >CATEGORIES
+                        <Link to="/" className="navbar-brand" style={{ float: 'right', marginRight: 40,  marginLeft: 30 }}
+                              onClick={(event => this.handleLogout(event))} >LOGOUT</Link></Link>
+
+                    )}            </h2>
+                    </Link>
+
             </div>
         )
     }}
