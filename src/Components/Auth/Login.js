@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 import '../styles.css'
 
 

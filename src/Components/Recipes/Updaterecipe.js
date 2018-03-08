@@ -4,7 +4,7 @@ import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 import '../styles.css'
 
 
@@ -55,7 +55,7 @@ class UpdateRecipe extends Component {
     }
 
     // handle edit recipe request
-    handleEditrecipe = () => {
+    handleEditRecipe = () => {
         const payload = new FormData();
         payload.set('name', this.state.name)    
         payload.set('time', this.state.time,)
@@ -116,7 +116,7 @@ class UpdateRecipe extends Component {
                                  onChange={this.handleInputChange} /><br />
 
                     <div className="buttons" id="btnstyle">
-                    <button className="network" id="one" onClick={(event => this.handleEditrecipe(event))}>UPDATE</button>
+                    <button className="network" id="one" onClick={(event => this.handleEditRecipe(event))}>UPDATE</button>
                     <Link to={"/categories/" + this.state.category_id + "/recipe/" + this.state.id}>
                     <button className="network" id="two">CANCEL</button></Link>
 

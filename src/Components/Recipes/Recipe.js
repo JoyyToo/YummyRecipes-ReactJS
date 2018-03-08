@@ -6,9 +6,9 @@ import {Card, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 import SearchBar from 'material-ui-search-bar'
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../Pagination/PaginationApp'
 
 class Recipe extends Component {
     // initialize state
@@ -32,7 +32,7 @@ class Recipe extends Component {
     };
 
     // handle get recipe request
-    handlerecipe = (page=1) => {
+    handleRecipe = (page=1) => {
         const category_id = this.props.match.params['category_id'];
     }
     // mount token when page loads
@@ -61,17 +61,19 @@ class Recipe extends Component {
             })
 
             .catch((error) => {
-                notify.show(error.response.data.message, 'error', 4000);
+                if (error.response){
+                    notify.show(error.response.data.message,'error', 4000);
+                }
             });
     };
 
     // call handle recipe before mounting
     componentWillMount() {
-        this.handlerecipe();
+        this.handleRecipe();
     }
 
     // handle delete recipe request
-    handleDeleterecipe = (event) => {
+    handleDeleteRecipe = (event) => {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
@@ -207,7 +209,7 @@ class Recipe extends Component {
                                             <FlatButton label="Delete" style={{'color': 'red'}}
                                                         category_id={recipe[key]['category_id']}
                                                         id={recipe[key]['id']}
-                                                        onClick={(event => this.handleDeleterecipe(event))}
+                                                        onClick={(event => this.handleDeleteRecipe(event))}
                                             />
                                         </Card>
 
@@ -216,7 +218,7 @@ class Recipe extends Component {
                                 </div>
                                             
                             ))}
-                            <Pagination changePage={this.handlerecipe.bind(this)} paginationObject={this.state.pagination}/>
+                            <Pagination changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>
                           
                     </div>
 

@@ -58,7 +58,7 @@ exports[`Recipes component renders properly 1`] = `
       />
     </div>
     <div>
-      <PaginationShorthand
+      <PaginationApp
         changePage={[Function]}
         paginationObject=""
       />

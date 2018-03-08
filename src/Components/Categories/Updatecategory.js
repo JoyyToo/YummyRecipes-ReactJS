@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import '../styles.css'
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 
 
 class UpdateCategory extends Component {
@@ -53,7 +53,7 @@ class UpdateCategory extends Component {
     }
 
     // handle edit category requests
-    handleEditcategory = () => {
+    handleEditCategory = () => {
         const payload = new FormData();
         payload.set('name', this.state.name);
         payload.set('desc', this.state.desc);
@@ -67,7 +67,9 @@ class UpdateCategory extends Component {
                     .push('/categories');
             })
             .catch((error) => {
-                notify.show(error.response.data.message, 'error', 4000);
+                if (error.response){
+                    notify.show(error.response.data.message,'error', 4000);
+                }
             });
     };
 
@@ -108,7 +110,7 @@ class UpdateCategory extends Component {
 
                             <div className="buttons">
                                 <button className="network" id="one"
-                                        onClick={(event => this.handleEditcategory(event))}>UPDATE
+                                        onClick={(event => this.handleEditCategory(event))}>UPDATE
                                 </button>
                                 <Link to="/categories">
                                     <button className="network" id="two">CANCEL</button>
