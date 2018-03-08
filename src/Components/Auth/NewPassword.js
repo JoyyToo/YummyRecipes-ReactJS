@@ -3,11 +3,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 import '../styles.css'
 
 
 class NewPassword extends Component {
+    // initialize state
     constructor (props) {
         super(props);
     this.state = {
@@ -15,6 +16,7 @@ class NewPassword extends Component {
     }
 }
 
+    // handle user input
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -22,11 +24,13 @@ class NewPassword extends Component {
         this.setState({[name]: value});
     } 
 
+    // handle new password request
     handleNewPassword = (event) => {
         const payload = new FormData() 
         payload.set('newpassword', this.state.newpassword)
         const token = this.props.match.params.token;
 
+        // send POST request to API
         axiosInstance.post(`auth/new-password/${token}`, payload)  
             .then((response) => {            
                     notify.show(response.data.message, 'success', 4000);
@@ -39,6 +43,7 @@ class NewPassword extends Component {
             });
         }
 
+    // render new password form
     render() {
         let style = {
             marginLeft: 20,

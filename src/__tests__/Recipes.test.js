@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Recipes from '../Components/Recipes/Viewrecipes'
+import Recipes from '../Components/Recipes/Recipe'
 
 describe('Recipes component', () => {
     const params = {
@@ -19,8 +19,8 @@ describe('Recipes component', () => {
         expect(shallowToJson(wrapper)).toMatchSnapshot();
     });
 
-    it('it renders handlerecipe correctly', () =>{
-        expect(wrapper.instance().handlerecipe( {preventDefault} ))    
+    it('it renders handleRecipe correctly', () =>{
+        expect(wrapper.instance().handleRecipe( {preventDefault} ))    
     });
 
     it('it renders handleInputChange correctly', () =>{

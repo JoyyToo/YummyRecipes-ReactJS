@@ -4,7 +4,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 
 class SingleRecipe extends Component {
     // initialize state
@@ -26,11 +26,11 @@ class SingleRecipe extends Component {
 
     // mount token when page loads
     componentDidMount() {
-        this.handlerecipe();
+        this.handleRecipe();
     }
 
     // handle get recipe request
-    handlerecipe = (props) => {
+    handleRecipe = (props) => {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
         const token = window.localStorage.getItem('token');
@@ -61,14 +61,14 @@ class SingleRecipe extends Component {
 
 
     // handle delete recipe request
-    handleDeleterecipe = (event) => {
+    handleDeleteRecipe = (event) => {
         let id = event.currentTarget.getAttribute('id');
         const category_id = this.props.match.params['category_id'];
 
         // send DELETE request to API
         axiosInstance.delete(`category/${category_id}/recipes/${id}`)
             .then((response) => {
-                this.handlerecipe();
+                this.handleRecipe();
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -132,7 +132,7 @@ class SingleRecipe extends Component {
                                             <FlatButton label="Delete" style={{'color': 'red'}}
                                                         category_id={recipe['category_id']}
                                                         id={recipe['id']}
-                                                        onClick={(event => this.handleDeleterecipe(event))} />
+                                                        onClick={(event => this.handleDeleteRecipe(event))} />
                                     </Card>
 
                                 </MuiThemeProvider>

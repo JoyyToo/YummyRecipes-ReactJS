@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Categories from '../Components/Categories/Viewcategories'
+import Categories from '../Components/Categories/Category'
 
 describe('Categories component', () => {
     const wrapper = shallow(<Categories />);
