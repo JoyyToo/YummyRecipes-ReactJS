@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound component renders properly 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <h1>
+    Oops
+  </h1>
+  <div>
+    <h2>
+      Page Not Found, 404. Sorry, there is nothing here.
+    </h2>
+    <div>
+      Visit our 
+      <button>
+        <Link
+          replace={false}
+          to="/"
+        >
+          HOMEPAGE
+        </Link>
+      </button>
+    </div>
+  </div>
+</div>
+`;

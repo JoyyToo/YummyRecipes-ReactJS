@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
+import { shallow} from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 import App from '../App';
 

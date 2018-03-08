@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingleRecipe component renders properly 1`] = `
+<div>
+  <MuiThemeProvider>
+    <div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "margin": 5,
+            "padding": 10,
+            "position": "relative",
+            "width": 450,
+          }
+        }
+      >
+        <MuiThemeProvider
+          is="nospace start"
+        >
+          <Card
+            expandable={false}
+            expanded={null}
+            initiallyExpanded={false}
+          >
+            <h2
+              style={
+                Object {
+                  "marginLeft": 30,
+                  "paddingTop": 10,
+                }
+              }
+            />
+            <p
+              style={
+                Object {
+                  "marginBottom": 30,
+                  "marginLeft": 30,
+                }
+              }
+            >
+              Time taken: 
+            </p>
+            <p
+              style={
+                Object {
+                  "marginBottom": 30,
+                  "marginLeft": 30,
+                }
+              }
+            >
+              Ingridients: 
+            </p>
+            <p
+              style={
+                Object {
+                  "marginBottom": 30,
+                  "marginLeft": 30,
+                }
+              }
+            >
+              Procedure: 
+            </p>
+            <CardText>
+              <div>
+                <p
+                  style={
+                    Object {
+                      "marginLeft": 15,
+                    }
+                  }
+                >
+                  <i>
+                    Created:
+                  </i>
+                   
+                </p>
+                <p
+                  style={
+                    Object {
+                      "marginBottom": 30,
+                      "marginLeft": 15,
+                    }
+                  }
+                >
+                  <i>
+                    Modified:
+                  </i>
+                   
+                </p>
+              </div>
+            </CardText>
+            <Link
+              replace={false}
+              to="/categories//recipes/"
+            >
+              <FlatButton
+                disabled={false}
+                fullWidth={false}
+                id=""
+                label="Edit"
+                labelPosition="after"
+                labelStyle={Object {}}
+                onKeyboardFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onTouchStart={[Function]}
+                primary={true}
+                secondary={false}
+              />
+            </Link>
+            <FlatButton
+              category_id=""
+              disabled={false}
+              fullWidth={false}
+              id=""
+              label="Delete"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+              style={
+                Object {
+                  "color": "red",
+                }
+              }
+            />
+          </Card>
+        </MuiThemeProvider>
+      </div>
+    </div>
+  </MuiThemeProvider>
+</div>
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 import Login from '../Components/Auth/Login'
 
@@ -31,44 +31,54 @@ describe('Login component', () => {
         expect(wrapper.find('[name="password"]')).toHaveLength(1);
     });
 
-    it('renders component in divs', () => {
-        expect(wrapper.find('div')).toHaveLength(4);
+    it('contains divs', () => {
+        expect(wrapper.find('div')).toHaveLength(5);
     });
 
-    it('renders component in li', () => {
+    it('contains li', () => {
         expect(wrapper.find('li')).toHaveLength(2);
     });
 
-    it('renders component in p', () => {
+    it('contains p', () => {
         expect(wrapper.find('p')).toHaveLength(2);
     });
 
-    it('renders component in br', () => {
+    it('contains br', () => {
         expect(wrapper.find('br')).toHaveLength(8);
     });
 
-    it('renders component in MuiThemeProvider', () => {
+    it('contains in MuiThemeProvider', () => {
         expect(wrapper.find('MuiThemeProvider')).toHaveLength(1);
     });
 
-    it('renders component in Link', () => {
+    it('contains Link', () => {
         expect(wrapper.find('Link')).toHaveLength(4);
     });
 
-    it('renders component in Paper', () => {
+    it('contains Paper', () => {
         expect(wrapper.find('Paper')).toHaveLength(1);
     });
 
-    it('renders component in i', () => {
+    it('contains i', () => {
         expect(wrapper.find('i')).toHaveLength(2);
     });
 
-    it('renders component in TextField ', () => {
+    it('contains TextField ', () => {
         expect(wrapper.find('TextField')).toHaveLength(3);
     });
 
-    it('renders component in button', () => {
+    it('contains button', () => {
         expect(wrapper.find('button')).toHaveLength(3);
     });
 
+    it('has initial state', () => {
+        expect(wrapper.state().email).toEqual('');
+        expect(wrapper.state().password).toEqual('');
+    });
+
+    it('has the correct form fields', () => {
+        expect(wrapper.find('[name="email"]')).toHaveLength(2);
+        expect(wrapper.find('[name="password"]')).toHaveLength(1);
+    });
+    
 })

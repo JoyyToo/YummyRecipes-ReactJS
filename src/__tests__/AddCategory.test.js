@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
-import sinon from 'sinon';
+import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 import AddCategory from '../Components/Categories/Addcategory'
 
@@ -22,39 +21,39 @@ describe('AddCategory component', () => {
         expect(component.instance().props.name).toBe('app')
     });
 
-    it('renders component in MuiThemeProvider', () => {
+    it('contains MuiThemeProvider', () => {
         expect(wrapper.find('MuiThemeProvider')).toHaveLength(1);
     });
 
-    it('renders component in divs', () => {
+    it('contains divs', () => {
         expect(wrapper.find('div')).toHaveLength(3);
     });
 
-    it('renders component in Paper', () => {
+    it('contains Paper', () => {
         expect(wrapper.find('Paper')).toHaveLength(1);
     });
 
-    it('renders component in p', () => {
+    it('contains p', () => {
         expect(wrapper.find('p')).toHaveLength(1);
     });
 
-    it('renders component in TextField ', () => {
+    it('contains TextField ', () => {
         expect(wrapper.find('TextField')).toHaveLength(2);
     });
 
-    it('renders component in button', () => {
+    it('contains button', () => {
         expect(wrapper.find('button')).toHaveLength(2);
     });
 
-    it('renders component in Link', () => {
+    it('contains Link', () => {
         expect(wrapper.find('Link')).toHaveLength(1);
     });
 
-    it('renders component in br', () => {
+    it('contains br', () => {
         expect(wrapper.find('br')).toHaveLength(9);
     });
 
-    it('renders component in b', () => {
+    it('contains b', () => {
         expect(wrapper.find('b')).toHaveLength(1);
     });
 

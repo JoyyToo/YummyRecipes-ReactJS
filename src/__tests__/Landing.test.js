@@ -12,28 +12,32 @@ describe('Landing component', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders component in divs', () => {
+  it('contains divs', () => {
     expect(wrapper.find('div')).toHaveLength(6);
   });
 
-  it('renders component in h2', () => {
+  it('contains h2', () => {
     expect(wrapper.find('h2')).toHaveLength(1);
   });
 
-  it('renders component in h1', () => {
+  it('contains h1', () => {
     expect(wrapper.find('h1')).toHaveLength(1);
   });
 
-  it('renders component in hr', () => {
+  it('contains hr', () => {
     expect(wrapper.find('hr')).toHaveLength(1);
   });
 
-  it('renders component in button', () => {
+  it('contains button', () => {
     expect(wrapper.find('button')).toHaveLength(2);
   });
 
-  it('renders component in p', () => {
+  it('contains p', () => {
     expect(wrapper.find('p')).toHaveLength(1);
+  });
+
+  it('contains Link', () => {
+    expect(wrapper.find('Link')).toHaveLength(2);
   });
 
 })
