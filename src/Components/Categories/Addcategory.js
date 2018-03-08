@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../styles.css'
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 
 
 class AddCategory extends Component {

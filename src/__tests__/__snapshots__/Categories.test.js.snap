@@ -60,7 +60,7 @@ exports[`Categories component renders properly 1`] = `
     <div />
   </MuiThemeProvider>
   <footer>
-    <PaginationShorthand
+    <PaginationApp
       changePage={[Function]}
       className="page"
       paginationObject=""

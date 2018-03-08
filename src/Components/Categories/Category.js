@@ -7,8 +7,8 @@ import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
 import SearchBar from 'material-ui-search-bar'
-import Pagination from '../Pagination/Pagination'
-import axiosInstance from '../Constants/Axioscall';
+import Pagination from '../Pagination/PaginationApp'
+import axiosInstance from '../Constants/AxiosCall';
 import '../styles.css'
 
 class Category extends Component {
@@ -31,7 +31,7 @@ class Category extends Component {
     };
 
     // handle get category request
-    handlecategory = (page=1) => {
+    handleCategory = (page=1) => {
         const token = window.localStorage.getItem('token');
         if (!token) {
             window.location.replace('/login')
@@ -58,18 +58,18 @@ class Category extends Component {
 
     // components mounted when page is loaded
     componentWillMount() {
-        this.handlecategory()
+        this.handleCategory()
     }
 
     // handle delete category request
-    handleDeletecategory = (event) => {
+    handleDeleteCategory = (event) => {
         let id = event.currentTarget.getAttribute('id');
 
         // send DELETE request to API
         axiosInstance.delete(`category/${id}`)
 
             .then((response) => {
-                this.handlecategory();
+                this.handleCategory();
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -79,7 +79,9 @@ class Category extends Component {
                     .push('/categories');
             })
             .catch((error) => {
-                notify.show(error.response.data.message, 'error', 4000);
+                if (error.response){
+                    notify.show(error.response.data.message,'error', 4000);
+                }
             });
     };
 
@@ -167,7 +169,7 @@ class Category extends Component {
                                                             primary={true}/></Link>
                                             <FlatButton label="Delete" style={{'color': 'red'}}
                                                         id={category[key]['id']}
-                                                        onClick={this.handleDeletecategory.bind(this)}
+                                                        onClick={this.handleDeleteCategory.bind(this)}
                                             />
 
                                             <Link to={"/categories/" + category[key]['id'] + "/recipes"}><FlatButton
@@ -183,7 +185,7 @@ class Category extends Component {
 
                 </MuiThemeProvider>
                 <footer>
-                <Pagination className="page" style={{marginTop: 100}} changePage={this.handlecategory.bind(this)} paginationObject={this.state.pagination}/>
+                <Pagination className="page" style={{marginTop: 100}} changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
                 </footer>
 
             </div>

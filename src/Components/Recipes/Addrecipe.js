@@ -4,7 +4,7 @@ import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 import '../styles.css'
 
 
@@ -36,7 +36,7 @@ class AddRecipe extends Component {
     }
 
     // handle add recipe request
-    handleAddrecipe = (event) => {
+    handleAddRecipe = (event) => {
         const category_id = this.props.match.params['category_id'];
         const payload = new FormData()
         payload.set('name', this.state.name)    
@@ -98,7 +98,7 @@ class AddRecipe extends Component {
                                  onChange={this.handleInputChange} /><br />
 
                     <div className="buttons" id="btnstyle">
-                    <button className="network" id="one" onClick={(event => this.handleAddrecipe(event))}>ADD</button>
+                    <button className="network" id="one" onClick={(event => this.handleAddRecipe(event))}>ADD</button>
                     <Link to={"/categories/" + category_id + "/recipe/" + id}>
                     <button className="network" id="two">CANCEL</button></Link>
 

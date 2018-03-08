@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
 import '../styles.css'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 
 
 class Register extends Component {
