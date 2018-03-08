@@ -72,20 +72,10 @@ p{
 
 .navbar-brand h2 {
   color: white;
+  margin-left: 20px;
 }
 
-#navone {
-  float: 'right';
-  margin-right: 30%;
-}
-
-#navtwo {
-  float: 'right';
-  margin-right: 30%;
-  margin-left: 40%;
-  
-}
-.container {
+#container {
   background-color: rgba(20, 20, 20, 0);
   margin-left: 40px; 
 }

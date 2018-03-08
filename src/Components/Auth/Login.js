@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
 import axiosInstance from '../Constants/Axioscall';
-import './Register.css'
+import '../styles.css'
 
 
 class Login extends Component {
@@ -134,7 +134,7 @@ class Login extends Component {
                 <div className="inputs">
                 <Paper zDepth={2} style={divstyle}>
                     <p className="heading">Login Here</p>
-
+                    <div className="text">
                     <i className="material-icons">mail</i>
                         <TextField floatingLabelText="Email" name="email" 
                                 value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
@@ -142,7 +142,7 @@ class Login extends Component {
                     <i className="material-icons">lock</i>
                         <TextField floatingLabelText="Password" type="password" name="password" 
                         value={this.state.password} style={style} onChange={this.handleInputChange} /><br /><br /><br />
-
+                    </div>
                     <div className="buttons">
                     <button className="network" id="one" 
                                 onClick={(event => this.handleLogin(event))}>LOGIN</button>

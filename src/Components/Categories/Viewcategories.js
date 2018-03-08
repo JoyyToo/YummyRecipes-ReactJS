@@ -9,6 +9,7 @@ import {notify} from 'react-notify-toast'
 import SearchBar from 'material-ui-search-bar'
 import Pagination from '../Pagination/Pagination'
 import axiosInstance from '../Constants/Axioscall';
+import '../styles.css'
 
 class Category extends Component {
     // initialize state
@@ -175,20 +176,18 @@ class Category extends Component {
 
                                 </div>
                                                                                         
-                            ))}
-                            <Pagination changePage={this.handlecategory.bind(this)} paginationObject={this.state.pagination}/>
-                          
+                            ))}                                                   
                     </div>
 
                 </MuiThemeProvider>
+                <footer>
+                <Pagination className="page" style={{marginTop: 100}} changePage={this.handlecategory.bind(this)} paginationObject={this.state.pagination}/>
+                </footer>
 
             </div>
-            
-
-        )        
-    }
-    
+        )} 
 };
+
 
 export default Category;
 

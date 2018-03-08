@@ -4,7 +4,7 @@ import TextField  from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
 import axiosInstance from '../Constants/Axioscall';
-import './Register.css'
+import '../styles.css'
 
 
 class NewPassword extends Component {
@@ -59,7 +59,7 @@ class NewPassword extends Component {
                 <p className="heading">New Password Here</p>
 
                         <TextField floatingLabelText="New Password" name="newpassword" 
-                                value={this.state.newpassword} style={style} onChange={this.handleInputChange}/><br />
+                                value={this.state.newpassword} style={style} type="password" onChange={this.handleInputChange}/><br />
 
                         <button className="network" id="one" 
                                 onClick={(event => this.handleNewPassword(event))}>RESET</button>

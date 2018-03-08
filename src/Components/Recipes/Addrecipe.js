@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
 import {notify} from 'react-notify-toast'
 import axiosInstance from '../Constants/Axioscall';
-import '../Auth/Register.css'
+import '../styles.css'
 
 
 class AddRecipe extends Component {

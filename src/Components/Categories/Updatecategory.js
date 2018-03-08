@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import {Link} from 'react-router-dom';
-import '../Auth/Register.css'
+import '../styles.css'
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
 import axiosInstance from '../Constants/Axioscall';
