@@ -9,7 +9,7 @@ Yummy Recipes application using react library that allows a user do the followin
 - Create, update, view and delete a category.
 - Create, update, view and delete a recipe.
 
-## Testing The Apploication
+## Testing The Application
 
 
 ```
