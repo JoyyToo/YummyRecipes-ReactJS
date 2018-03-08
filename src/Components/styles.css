@@ -82,3 +82,22 @@
 #btnstyle {
     margin: 13px 45px 12px 25px;
 }
+
+footer{
+    clear: both;
+    text-align: right;
+    padding: 2em ;
+    margin-right: 1.5em;
+}
+
+footer a{
+    padding: .3em;
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: 700;
+
+}
+
+footer a:hover{
+    color: #FF0000;
+}

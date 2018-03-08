@@ -45,7 +45,10 @@ class Register extends Component {
         })
 
         .catch((error) => {
-            notify.show(error.response.data.message, 'error', 4000);
+            if (error.response){
+                notify.show(error.response.data.message,'error', 4000);
+            }
+           
         });
     }
 
