@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Pagination , Icon } from 'semantic-ui-react'
 
-class PaginationShorthand extends React.Component {
+class PaginationApp extends React.Component {
 
+  // change page function
   changePage = (e, { activePage }) => { 
     if (!!this.props.category_id){
       this.props.changePage(this.props.category_id, { activePage }['activePage']) 
@@ -11,6 +12,7 @@ class PaginationShorthand extends React.Component {
       this.props.changePage({ activePage }['activePage']) 
     }
   }
+  // render the pagination ui
   render() {
     const { paginationObject } = this.props;
     return (
@@ -30,8 +32,8 @@ class PaginationShorthand extends React.Component {
   }
 }
 
-PaginationShorthand.propTypes = {
+PaginationApp.propTypes = {
   paginationObject: PropTypes.object.isRequired, 
 }
 
-export default PaginationShorthand
+export default PaginationApp

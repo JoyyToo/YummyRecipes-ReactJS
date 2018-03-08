@@ -4,7 +4,7 @@ import {Card, CardText,} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import axiosInstance from '../Constants/Axioscall';
+import axiosInstance from '../Constants/AxiosCall';
 
 class SingleCategory extends Component {
     // initialize state
@@ -22,7 +22,7 @@ class SingleCategory extends Component {
     }
 
     // handle get category request
-    handlecategory = (event) => {
+    handleCategory = (event) => {
         const id = this.props.match.params['id'];
         const token = window.localStorage.getItem('token');
         if (!token) {
@@ -49,14 +49,14 @@ class SingleCategory extends Component {
     };
 
     // handle delete category request
-    handleDeletecategory = (event) => {
+    handleDeleteCategory = (event) => {
         let id = event.currentTarget.getAttribute('id');
 
         // send DELETE request to API
         axiosInstance.delete(`category/${id}`)
 
             .then((response) => {
-                this.handlecategory();
+                this.handleCategory();
                 notify.show(response.data.message, 'success', 4000);
                 this.setState({
                     id: this.state.id
@@ -73,7 +73,7 @@ class SingleCategory extends Component {
 
     // mount get category component on page load
     componentDidMount() {
-        this.handlecategory();
+        this.handleCategory();
     }
 
     // render a single category
@@ -122,7 +122,7 @@ class SingleCategory extends Component {
                                                         primary={true}/></Link>
                                         <FlatButton label="Delete" style={{color: 'red'}}
                                                     id={category['id']}
-                                                    onClick={this.handleDeletecategory.bind(this)}
+                                                    onClick={this.handleDeleteCategory.bind(this)}
                                         />
 
                                         <Link to={"/categories/" + category['id'] + "/recipes"}><FlatButton

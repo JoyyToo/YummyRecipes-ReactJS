@@ -5,11 +5,13 @@ import './Landing.css'
 
 class Nav extends Component {
 
+    // handle logout request
     handleLogout = (event) => {
         window.localStorage.clear()
         notify.show('You logged out successfully.', 'success', 4000)
     }
     
+    // render navbar
     render() {
         const Accesstoken = window.localStorage.token
 

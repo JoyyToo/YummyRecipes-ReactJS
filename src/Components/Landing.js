@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.css'
 
-const landing = () => { 
+const Landing = () => { 
     const Accesstoken = window.localStorage.token
 
+    // render the landing page
     return  (       
     <div className="App">
         <div className="intro-message">
@@ -41,5 +42,5 @@ const landing = () => {
     )
 };
 
-export default landing;
+export default Landing;
 
