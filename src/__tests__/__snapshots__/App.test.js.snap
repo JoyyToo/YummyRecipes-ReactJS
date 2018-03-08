@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders properly 1`] = `
+<BrowserRouter>
+  <div>
+    <Nav />
+    <_class
+      options={Object {}}
+    />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/register"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/login"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/newpassword/:token"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/addcategory"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/updatecategory/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:category_id/recipes"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:category_id/addrecipe"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:category_id/recipes/:id"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/categories/:category_id/recipe/:id"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </div>
+</BrowserRouter>
+`;

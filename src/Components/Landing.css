@@ -1,0 +1,81 @@
+.App {
+    text-align: center;
+}
+p{
+  font-family: 'Josefin Slab', serif;
+}
+
+.intro-message>h1 {
+  margin-top: 200px;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  font-size: 5em;
+}
+
+.intro-divider {
+  width: 400px;
+  margin-bottom: 50px;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.intro-message>h2 {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+@media(max-width:767px) {
+    .intro-message {
+      padding-bottom: 15%;
+    }
+    .intro-message>h1 {
+      font-size: 3em;
+    }
+    .intro-social-buttons{
+      font-size: 80%;
+      display: block;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+    .intro-divider {
+      width: 100%;
+    }
+  }
+  
+.network-name {
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-width: 2px;
+    background: rgba(20, 20, 20, 0);
+    color: white;
+    height: 50px;
+    margin: 13px 0px 12px 10px;
+    margin-top: 10px;
+    width: 130px;
+    margin-bottom: 220px;
+  }
+
+.network-name:hover {
+    background-color: white;
+    transition-duration: 0.4s;
+    color: black;
+}
+.navbar-brand{
+  color: white;
+  background-color: rgba(20, 20, 20, 0);
+  opacity: .8;
+  align-content: right !important; 
+  text-decoration: none;
+}
+
+.navbar-brand h2 {
+  color: white;
+  margin-left: 20px;
+}
+
+#container {
+  background-color: rgba(20, 20, 20, 0);
+  margin-left: 40px; 
+}

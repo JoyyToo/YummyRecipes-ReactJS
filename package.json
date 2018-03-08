@@ -1,0 +1,39 @@
+{
+  "name": "yummyrecipes-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "coveralls": "^3.0.0",
+    "material-ui": "^0.20.0",
+    "material-ui-pagination": "^1.1.6",
+    "material-ui-search-bar": "^0.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-notify-toast": "^0.4.0",
+    "react-responsive-modal": "^2.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "semantic-ui": "^2.3.0",
+    "semantic-ui-react": "^0.78.3",
+    "sinon": "^4.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "jest-localstorage-mock": "^2.2.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/registerServiceWorker.js"
+    ]
+  }
+}

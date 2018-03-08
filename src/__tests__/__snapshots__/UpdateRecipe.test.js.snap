@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateRecipe  component renders properly 1`] = `
+<MuiThemeProvider>
+  <div
+    className="main"
+  >
+    <div
+      className="inputs"
+      style={
+        Object {
+          "paddingTop": "60px",
+        }
+      }
+    >
+      <Paper
+        circle={false}
+        rounded={true}
+        style={
+          Object {
+            "margin": "auto",
+            "paddingLeft": 20,
+            "textAlign": "left",
+            "width": 500,
+          }
+        }
+        transitionEnabled={true}
+        zDepth={2}
+      >
+        <p
+          class="heading"
+        >
+          <b>
+            UPDATE RECIPE
+          </b>
+        </p>
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Name"
+          fullWidth={false}
+          multiLine={false}
+          name="name"
+          onChange={[Function]}
+          rows={1}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <br />
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Time taken"
+          fullWidth={false}
+          multiLine={false}
+          name="time"
+          onChange={[Function]}
+          rows={1}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <br />
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Ingridients"
+          fullWidth={false}
+          multiLine={true}
+          name="ingredients"
+          onChange={[Function]}
+          rows={3}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Procedure"
+          fullWidth={false}
+          multiLine={true}
+          name="procedure"
+          onChange={[Function]}
+          rows={3}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <div
+          className="buttons"
+          id="btnstyle"
+        >
+          <button
+            className="network"
+            id="one"
+            onClick={[Function]}
+          >
+            UPDATE
+          </button>
+          <Link
+            replace={false}
+            to="/categories//recipe/"
+          >
+            <button
+              className="network"
+              id="two"
+            >
+              CANCEL
+            </button>
+          </Link>
+        </div>
+        <p>
+          A recipe has no soul. You are the cook, give life to the recipe
+        </p>
+         
+        <br />
+      </Paper>
+      <br />
+    </div>
+  </div>
+</MuiThemeProvider>
+`;
