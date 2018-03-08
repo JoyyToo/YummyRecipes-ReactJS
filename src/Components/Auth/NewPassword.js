@@ -1,12 +1,10 @@
 import React, { Component }  from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
-import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
-import './Register.css'
+import axiosInstance from '../Constants/Axioscall';
+import '../styles.css'
 
 
 class NewPassword extends Component {
@@ -27,32 +25,17 @@ class NewPassword extends Component {
     handleNewPassword = (event) => {
         const payload = new FormData() 
         payload.set('newpassword', this.state.newpassword)
+        const token = this.props.match.params.token;
 
-            const token = this.props.match.params.token;
-
-            axios({
-                url: `http://127.0.0.1:5000/api/v1/auth/new-password/${token}`,
-                method: 'post',
-                data: payload,
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            })
-    
-            .then((response) => {
-                {
+        axiosInstance.post(`auth/new-password/${token}`, payload)  
+            .then((response) => {            
                     notify.show(response.data.message, 'success', 4000);
                     this.props
                     .history
-                    .push('/login')
-                }
-            
-                
+                    .push('/login')         
             })
-    
             .catch((error) => {              
-                notify.show(error.response.data.message, 'error', 4000);
-               
+                notify.show(error.response.data.message, 'error', 4000);             
             });
         }
 
@@ -76,7 +59,7 @@ class NewPassword extends Component {
                 <p className="heading">New Password Here</p>
 
                         <TextField floatingLabelText="New Password" name="newpassword" 
-                                value={this.state.newpassword} style={style} onChange={this.handleInputChange}/><br />
+                                value={this.state.newpassword} style={style} type="password" onChange={this.handleInputChange}/><br />
 
                         <button className="network" id="one" 
                                 onClick={(event => this.handleNewPassword(event))}>RESET</button>

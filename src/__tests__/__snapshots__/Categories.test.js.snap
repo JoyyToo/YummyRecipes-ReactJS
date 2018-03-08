@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories component renders properly 1`] = `
+<div>
+  <MuiThemeProvider>
+    <div>
+      <Link
+        replace={false}
+        to="/addcategory"
+      >
+        <FloatingActionButton
+          disabled={false}
+          mini={false}
+          secondary={true}
+          style={
+            Object {
+              "marginLeft": 20,
+            }
+          }
+          zDepth={2}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+      </Link>
+      <SearchBar
+        closeIcon={
+          <NavigationClose
+            color="#9e9e9e"
+          />
+        }
+        dataSource={Array []}
+        dataSourceConfig={
+          Object {
+            "text": "text",
+            "value": "value",
+          }
+        }
+        disabled={false}
+        hintText="Search"
+        name="q"
+        onChange={[Function]}
+        onRequestSearch={[Function]}
+        searchIcon={
+          <ActionSearch
+            color="#9e9e9e"
+          />
+        }
+        spellCheck={false}
+        style={
+          Object {
+            "float": "right",
+            "margin": "0 auto",
+            "marginRight": 75,
+            "width": 430,
+          }
+        }
+        value=""
+      />
+    </div>
+    <div />
+  </MuiThemeProvider>
+  <footer>
+    <PaginationShorthand
+      changePage={[Function]}
+      className="page"
+      paginationObject=""
+      style={
+        Object {
+          "marginTop": 100,
+        }
+      }
+    />
+  </footer>
+</div>
+`;
