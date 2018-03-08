@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddCategory component renders properly 1`] = `
+exports[`AddRecipe component renders properly 1`] = `
 <MuiThemeProvider>
   <div
     className="main"
@@ -9,7 +9,7 @@ exports[`AddCategory component renders properly 1`] = `
       className="inputs"
       style={
         Object {
-          "paddingTop": "150px",
+          "paddingTop": "60px",
         }
       }
     >
@@ -21,7 +21,7 @@ exports[`AddCategory component renders properly 1`] = `
             "margin": "auto",
             "paddingLeft": 20,
             "textAlign": "left",
-            "width": 430,
+            "width": 500,
           }
         }
         transitionEnabled={true}
@@ -31,7 +31,7 @@ exports[`AddCategory component renders properly 1`] = `
           class="heading"
         >
           <b>
-            ADD CATEGORY
+            ADD RECIPE
           </b>
         </p>
         <TextField
@@ -46,7 +46,7 @@ exports[`AddCategory component renders properly 1`] = `
           style={
             Object {
               "marginLeft": 20,
-              "width": 340,
+              "width": 440,
             }
           }
           type="text"
@@ -58,16 +58,16 @@ exports[`AddCategory component renders properly 1`] = `
         <TextField
           disabled={false}
           floatingLabelFixed={false}
-          floatingLabelText="Description"
+          floatingLabelText="Time taken"
           fullWidth={false}
           multiLine={false}
-          name="desc"
+          name="time"
           onChange={[Function]}
           rows={1}
           style={
             Object {
               "marginLeft": 20,
-              "width": 340,
+              "width": 440,
             }
           }
           type="text"
@@ -76,9 +76,49 @@ exports[`AddCategory component renders properly 1`] = `
         />
         <br />
         <br />
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Ingredients"
+          fullWidth={false}
+          multiLine={true}
+          name="ingredients"
+          onChange={[Function]}
+          rows={3}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
+        <br />
+        <TextField
+          disabled={false}
+          floatingLabelFixed={false}
+          floatingLabelText="Procedure"
+          fullWidth={false}
+          multiLine={true}
+          name="procedure"
+          onChange={[Function]}
+          rows={3}
+          style={
+            Object {
+              "marginLeft": 20,
+              "width": 440,
+            }
+          }
+          type="text"
+          underlineShow={true}
+          value=""
+        />
         <br />
         <div
           className="buttons"
+          id="btnstyle"
         >
           <button
             className="network"
@@ -89,7 +129,7 @@ exports[`AddCategory component renders properly 1`] = `
           </button>
           <Link
             replace={false}
-            to="/categories"
+            to="/categories/undefined/recipe/"
           >
             <button
               className="network"
@@ -98,119 +138,12 @@ exports[`AddCategory component renders properly 1`] = `
               CANCEL
             </button>
           </Link>
-          <br />
-          <br />
-          <br />
         </div>
-      </Paper>
-      <br />
-    </div>
-  </div>
-</MuiThemeProvider>
-`;
-
-exports[`AddCategory component renders properly 1`] = `
-<MuiThemeProvider>
-  <div
-    className="main"
-  >
-    <div
-      className="inputs"
-      style={
-        Object {
-          "paddingTop": "150px",
-        }
-      }
-    >
-      <Paper
-        circle={false}
-        rounded={true}
-        style={
-          Object {
-            "margin": "auto",
-            "paddingLeft": 20,
-            "textAlign": "left",
-            "width": 430,
-          }
-        }
-        transitionEnabled={true}
-        zDepth={2}
-      >
-        <p
-          class="heading"
-        >
-          <b>
-            ADD CATEGORY
-          </b>
+        <p>
+          A recipe has no soul. You are the cook, give life to the recipe
         </p>
-        <TextField
-          disabled={false}
-          floatingLabelFixed={false}
-          floatingLabelText="Name"
-          fullWidth={false}
-          multiLine={false}
-          name="name"
-          onChange={[Function]}
-          rows={1}
-          style={
-            Object {
-              "marginLeft": 20,
-              "width": 340,
-            }
-          }
-          type="text"
-          underlineShow={true}
-          value=""
-        />
+         
         <br />
-        <br />
-        <TextField
-          disabled={false}
-          floatingLabelFixed={false}
-          floatingLabelText="Description"
-          fullWidth={false}
-          multiLine={false}
-          name="desc"
-          onChange={[Function]}
-          rows={1}
-          style={
-            Object {
-              "marginLeft": 20,
-              "width": 340,
-            }
-          }
-          type="text"
-          underlineShow={true}
-          value=""
-        />
-        <br />
-        <br />
-        <br />
-        <div
-          className="buttons"
-        >
-          <button
-            className="network"
-            id="one"
-            onClick={[Function]}
-          >
-            ADD
-          </button>
-          <Link
-            replace={false}
-            to="/categories"
-          >
-            <button
-              className="network"
-              id="two"
-            >
-              CANCEL
-            </button>
-          </Link>
-          <br />
-          <br />
-          <br />
-        </div>
       </Paper>
       <br />
     </div>

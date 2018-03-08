@@ -3,13 +3,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField  from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import {notify} from 'react-notify-toast'
-import axios from 'axios';
-import * as constant from "../constant";
-import './Register.css'
+import axiosInstance from '../Constants/Axioscall';
+import '../styles.css'
 
 
 class Login extends Component {
@@ -38,14 +36,7 @@ class Login extends Component {
     payload.set('password', this.state.password,)
         
         // send POST request to API
-        axios({
-            url: `${constant.URL}/auth/login`,
-            method: 'post',
-            data: payload,
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            }
-        })
+        axiosInstance.post('auth/login', payload)
 
         .then((response) => {
             localStorage.setItem('token', response.data.jwt_token);
@@ -66,22 +57,13 @@ class Login extends Component {
         payload.set('email', this.state.email)    
     
             // send POST request to API
-            axios({
-                url: `${constant.URL}/auth/reset-password`,
-                method: 'post',
-                data: payload,
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            })
+            axiosInstance.post('auth/reset-password', payload)
     
             .then((response) => {
-                {
                     notify.show(response.data.message, 'success', 4000);
                     this.props
                     .history
-                    .push('/newpassword')
-                }               
+                    .push('/')             
             })
     
             .catch((error) => {         
@@ -152,7 +134,7 @@ class Login extends Component {
                 <div className="inputs">
                 <Paper zDepth={2} style={divstyle}>
                     <p className="heading">Login Here</p>
-
+                    <div className="text">
                     <i className="material-icons">mail</i>
                         <TextField floatingLabelText="Email" name="email" 
                                 value={this.state.email} style={style} onChange={this.handleInputChange}/><br />
@@ -160,7 +142,7 @@ class Login extends Component {
                     <i className="material-icons">lock</i>
                         <TextField floatingLabelText="Password" type="password" name="password" 
                         value={this.state.password} style={style} onChange={this.handleInputChange} /><br /><br /><br />
-
+                    </div>
                     <div className="buttons">
                     <button className="network" id="one" 
                                 onClick={(event => this.handleLogin(event))}>LOGIN</button>

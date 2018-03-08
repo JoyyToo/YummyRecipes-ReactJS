@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders properly 1`] = `
+<div
+  className="container"
+>
+  <Link
+    className="navbar-brand"
+    replace={false}
+    to="/"
+  >
+    <h2>
+      YUMMY
+                  
+    </h2>
+  </Link>
+</div>
+`;
