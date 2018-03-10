@@ -151,11 +151,11 @@ class Category extends Component {
                             Object.keys(category).map((key) => (
                                 <div style={styles.card2} key={key}>
                                     <MuiThemeProvider is="nospace start">
-                                        <Card style={{height: 250}}>
+                                        <Card style={{height: 200}}>
                                             <h2 style={{marginLeft: 30, 
                                                 paddingTop: 10,  textDecoration: 'none' }} >
                                                 {category[key]['name']}</h2>
-                                            <p style={{marginLeft: 30, marginBottom: 90}}>{category[key]['desc'].slice(0,50)}</p>
+                                            <p style={{marginLeft: 30, marginBottom: 50}}>{category[key]['desc'].slice(0,50)}</p>
                                             <CardText>
                                                 {
 
@@ -185,7 +185,7 @@ class Category extends Component {
 
                 </MuiThemeProvider>
                 <footer>
-                <Pagination className="page" style={{marginTop: 100}} changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
+                <Pagination className="page" changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
                 </footer>
 
             </div>
