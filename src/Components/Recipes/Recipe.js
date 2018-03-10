@@ -160,7 +160,7 @@ class Recipe extends Component {
                             Object.keys(recipe).map((key) => (
                                 <div style={styles.card2} key={key}>
                                     <MuiThemeProvider is="nospace start">
-                                        <Card style={{height: 250}}>
+                                        <Card style={{height: 200}}>
                                             <h2 style={{marginLeft: 30, 
                                                 paddingTop: 10}} >
                                                 {recipe[key]['name']}</h2>
@@ -192,11 +192,13 @@ class Recipe extends Component {
                                 </div>
                                             
                             ))}
-                            <Pagination changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>
-                          
+                            
                     </div>
 
                 </MuiThemeProvider>
+                <footer>
+                    <Pagination changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>      
+                </footer>
 
             </div>
 
