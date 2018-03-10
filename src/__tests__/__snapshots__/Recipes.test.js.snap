@@ -57,12 +57,13 @@ exports[`Recipes component renders properly 1`] = `
         value=""
       />
     </div>
-    <div>
-      <PaginationApp
-        changePage={[Function]}
-        paginationObject=""
-      />
-    </div>
+    <div />
   </MuiThemeProvider>
+  <footer>
+    <PaginationApp
+      changePage={[Function]}
+      paginationObject=""
+    />
+  </footer>
 </div>
 `;
