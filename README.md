@@ -12,8 +12,6 @@ Yummy Recipes application using react library that allows a user do the followin
 - Create, update, view and delete a recipe.
 
 ## Testing The Application
-
-
 ```
 $ git clone https://github.com/JoyyToo/YummyRecipes-ReactJS.git
 $ cd yummyrecipes-react
@@ -34,6 +32,17 @@ npm start
 ```
 npm test
 ```
+
+# Screenshots
+## Landing Page
+<img width="1400" alt="screen shot 2018-03-10 at 13 02 56" src="https://user-images.githubusercontent.com/27849036/37241110-e0bcc188-2464-11e8-93a1-7a21df1442f2.png">
+
+## Log in
+<img width="1426" alt="login" src="https://user-images.githubusercontent.com/27849036/37241131-402015e4-2465-11e8-89e3-ae92bce3a6df.png">
+
+## Categories
+
+<img width="1409" alt="screen shot 2018-03-10 at 13 02 26" src="https://user-images.githubusercontent.com/27849036/37241160-7309c392-2465-11e8-8811-d7fd39fe63de.png">
 
 ## Heroku Link
 
