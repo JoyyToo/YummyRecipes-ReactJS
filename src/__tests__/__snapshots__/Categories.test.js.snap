@@ -22,12 +22,14 @@ exports[`Categories component renders properly 1`] = `
           <ContentAdd />
         </FloatingActionButton>
       </Link>
-      <SearchBar
-        closeIcon={
-          <NavigationClose
-            color="#9e9e9e"
-          />
+      <AutoComplete
+        anchorOrigin={
+          Object {
+            "horizontal": "left",
+            "vertical": "bottom",
+          }
         }
+        animated={true}
         dataSource={Array []}
         dataSourceConfig={
           Object {
@@ -35,26 +37,32 @@ exports[`Categories component renders properly 1`] = `
             "value": "value",
           }
         }
-        disabled={false}
+        disableFocusRipple={true}
+        filter={[Function]}
+        fullWidth={false}
         hintText="Search"
-        name="q"
-        onChange={[Function]}
-        onRequestSearch={[Function]}
-        searchIcon={
-          <ActionSearch
-            color="#9e9e9e"
-          />
-        }
-        spellCheck={false}
+        menuCloseDelay={300}
+        onNewRequest={[Function]}
+        onUpdateInput={[Function]}
+        open={false}
+        openOnFocus={true}
+        searchText=""
         style={
           Object {
+            "backgroundColor": "white",
             "float": "right",
             "margin": "0 auto",
             "marginRight": 75,
+            "paddingLeft": 20,
             "width": 430,
           }
         }
-        value=""
+        targetOrigin={
+          Object {
+            "horizontal": "left",
+            "vertical": "top",
+          }
+        }
       />
     </div>
     <div />
