@@ -85,7 +85,7 @@
 
 footer{
     clear: both;
-    text-align: right;
+    text-align: center;
     padding: 2em ;
     margin-right: 1.5em;
 }
@@ -95,7 +95,6 @@ footer a{
     color: #FFF;
     font-size: 1.5em;
     font-weight: 700;
-
 }
 
 footer a:hover{
