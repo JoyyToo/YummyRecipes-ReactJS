@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import UpdateCategories from '../Components/Categories/Updatecategory'
+import UpdateCategories from '../Components/Categories/UpdateCategory'
 
 describe('UpdateCategories component', () => {
     const params = {
