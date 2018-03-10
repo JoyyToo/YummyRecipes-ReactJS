@@ -6,9 +6,9 @@ import {Card, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import {notify} from 'react-notify-toast'
-import SearchBar from 'material-ui-search-bar'
-import Pagination from '../Pagination/PaginationApp'
+import Pagination from '../Pagination/PaginationApp';
 import axiosInstance from '../Constants/AxiosCall';
+import AutoComplete from 'material-ui/AutoComplete';
 import '../styles.css'
 
 class Category extends Component {
@@ -102,6 +102,30 @@ class Category extends Component {
             });
     };
 
+    // validate pagination
+    button() {
+        let category = this.state.categories;
+
+        if (category !== "") {
+            if (this.state.pagination['current page'] === 1) {
+
+                if (category.length > 5) {
+                    return (
+                        <footer>
+                <Pagination className="page" changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
+                </footer>
+                    );
+                }
+            } else if(this.state.pagination['current page'] !== 1){
+                if (category.length >= 1) {
+                    return (
+                        <footer>
+                <Pagination className="page" changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
+                </footer> 
+                    )
+                }
+             }}}
+
     // render the categories
     render() {
         let category = this.state.categories;
@@ -133,16 +157,23 @@ class Category extends Component {
                             <FloatingActionButton secondary={true} style={style}>
                                 <ContentAdd/>
                             </FloatingActionButton>
-                        </Link>          
-                        <SearchBar name="q" value={this.state.q}
-                          onChange={this.handleInputChange}
-                          onRequestSearch={this.handleSearch.bind(this)}
-                          style={{
+                        </Link> 
+                        <AutoComplete
+                            hintText="Search" searchText={this.state.q}
+                            onUpdateInput={this.handleInputChange}
+                            onNewRequest={this.handleSearch.bind(this)}
+                            dataSource={this.state.categories}
+                            filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+                            openOnFocus={true}
+                            style={{
                             margin: '0 auto',
                             width: 430,
                             float: 'right',
                             marginRight: 75,
-                          }} />
+                            backgroundColor: 'white',
+                            paddingLeft: 20                  
+                            }}
+                        />
                     </div>
 
                     <div>
@@ -184,10 +215,7 @@ class Category extends Component {
                     </div>
 
                 </MuiThemeProvider>
-                <footer>
-                <Pagination className="page" changePage={this.handleCategory.bind(this)} paginationObject={this.state.pagination}/>
-                </footer>
-
+                {this.button()}
             </div>
         )} 
 };

@@ -5,10 +5,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
-import {notify} from 'react-notify-toast'
+import {notify} from 'react-notify-toast';
 import axiosInstance from '../Constants/AxiosCall';
-import SearchBar from 'material-ui-search-bar'
-import Pagination from '../Pagination/PaginationApp'
+import Pagination from '../Pagination/PaginationApp';
+import AutoComplete from 'material-ui/AutoComplete';
 
 class Recipe extends Component {
     // initialize state
@@ -106,6 +106,30 @@ class Recipe extends Component {
             });
     };
 
+    // validate pagination
+    button() {
+        let recipe = this.state.recipes;
+
+        if (recipe !== "") {
+            if (this.state.pagination['current page'] === 1) {
+
+                if (recipe.length > 5) {
+                    return (
+                        <footer>
+                <Pagination className="page" changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>
+                </footer>
+                    );
+                }
+            } else if(this.state.pagination['current page'] !== 1){
+                if (recipe.length >= 1) {
+                    return (
+                        <footer>
+                <Pagination className="page" changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>
+                </footer> 
+                    )
+                }
+             }}}
+
     // render recipes
     render() {
         let recipe = this.state.recipes;
@@ -140,15 +164,20 @@ class Recipe extends Component {
                                 <ContentAdd/>
                             </FloatingActionButton>
                         </Link>
-                        <SearchBar name="q" value={this.state.q}
-                            onChange={this.handleInputChange}
-                            onRequestSearch={this.handleSearch.bind(this)}
-
+                        <AutoComplete
+                            hintText="Search" searchText={this.state.q}
+                            onUpdateInput={this.handleInputChange}
+                            onNewRequest={this.handleSearch.bind(this)}
+                            dataSource={this.state.recipes}
+                            filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+                            openOnFocus={true}
                             style={{
-                                margin: '0 auto',
-                                width: 430,
-                                float: 'right',
-                                marginRight: 75,
+                            margin: '0 auto',
+                            width: 430,
+                            float: 'right',
+                            marginRight: 75,
+                            backgroundColor: 'white',
+                            paddingLeft: 20                  
                             }}
                         />
                     </div>
@@ -196,10 +225,7 @@ class Recipe extends Component {
                     </div>
 
                 </MuiThemeProvider>
-                <footer>
-                    <Pagination changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination}/>      
-                </footer>
-
+                {this.button()}
             </div>
 
         )
