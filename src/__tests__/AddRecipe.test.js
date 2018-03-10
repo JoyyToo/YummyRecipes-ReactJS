@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import AddRecipe from '../Components/Recipes/Addrecipe'
+import AddRecipe from '../Components/Recipes/AddRecipe'
 
 describe('AddRecipe component', () => {
     const params = {

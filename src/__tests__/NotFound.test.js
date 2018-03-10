@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import NotFound from '../Components/Constants/PagenotFound'
+import NotFound from '../Components/Constants/NotFound'
 
 describe('NotFound component', () => {
     const wrapper = shallow(<NotFound />);
