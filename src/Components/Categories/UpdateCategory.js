@@ -31,10 +31,6 @@ class UpdateCategory extends Component {
     // handle get category request
     getCategory() {
         const id = this.props.match.params['id'];
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
         
         // send GET request to API
         axiosInstance.get(`category/${id}`)

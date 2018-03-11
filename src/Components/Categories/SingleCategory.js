@@ -24,10 +24,6 @@ class SingleCategory extends Component {
     // handle get category request
     handleCategory = (event) => {
         const id = this.props.match.params['id'];
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
 
         // send GET request to API
         axiosInstance.get(`category/${id}`)

@@ -24,7 +24,7 @@ class SingleRecipe extends Component {
         }
     }
 
-    // mount token when page loads
+    // mount recipes when page loads
     componentDidMount() {
         this.handleRecipe();
     }
@@ -33,10 +33,6 @@ class SingleRecipe extends Component {
     handleRecipe = (props) => {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes/${id}`)

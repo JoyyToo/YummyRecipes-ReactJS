@@ -16,6 +16,7 @@ import AddRecipe from './Components/Recipes/AddRecipe'
 import Recipe from './Components/Recipes/Recipe'
 import UpdateCategory from './Components/Categories/UpdateCategory'
 import UpdateRecipe from './Components/Recipes/UpdateRecipe'
+import PrivateRoute from './Components/Constants/PrivateRoute';
 
 class App extends Component {
   render() {
@@ -29,14 +30,14 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/newpassword/:token" component={NewPassword} />
-          <Route exact path="/categories" component={Categories} />
-          <Route exact path="/categories/:id" component={SingleCategory} />
-          <Route exact path="/addcategory" component={AddCategory} />
-          <Route exact path="/updatecategory/:id" component={UpdateCategory} />
-          <Route exact path="/categories/:category_id/recipes" component={Recipe} />
-          <Route exact path="/categories/:category_id/addrecipe" component={AddRecipe} />
-          <Route exact path="/categories/:category_id/recipes/:id" component={UpdateRecipe} />
-          <Route exact path="/categories/:category_id/recipe/:id" component={SingleRecipe} />
+          <PrivateRoute exact path="/categories" component={Categories} />
+          <PrivateRoute exact path="/categories/:id" component={SingleCategory} />
+          <PrivateRoute exact path="/addcategory" component={AddCategory} />
+          <PrivateRoute exact path="/updatecategory/:id" component={UpdateCategory} />
+          <PrivateRoute exact path="/categories/:category_id/recipes" component={Recipe} />
+          <PrivateRoute exact path="/categories/:category_id/addrecipe" component={AddRecipe} />
+          <PrivateRoute exact path="/categories/:category_id/recipes/:id" component={UpdateRecipe} />
+          <PrivateRoute exact path="/categories/:category_id/recipe/:id" component={SingleRecipe} />
           <Route component={NotFound} />
           
         </Switch>
