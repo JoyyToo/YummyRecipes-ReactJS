@@ -35,7 +35,7 @@ npm test
 
 ## Test coverage
 ```
-npm test -- -coverage
+npm test -- --coverage
 ```
 
 # Screenshots
