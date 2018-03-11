@@ -33,7 +33,7 @@ exports[`App component renders properly 1`] = `
         path="/resetpassword"
 >>>>>>> [Feature 155119223]:
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
@@ -54,7 +54,7 @@ exports[`App component renders properly 1`] = `
         path="/categories"
 >>>>>>> [Feature 155119223]:
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
@@ -63,7 +63,7 @@ exports[`App component renders properly 1`] = `
         path="/categories/:id"
 >>>>>>> [Feature 155119223]:
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
@@ -78,19 +78,19 @@ exports[`App component renders properly 1`] = `
 <<<<<<< HEAD
         path="/categories/:category_id/recipes"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/addrecipe"
 =======
         path="/updatecategory/:id"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/recipes"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
@@ -100,7 +100,7 @@ exports[`App component renders properly 1`] = `
         path="/categories/:category_id/addrecipe"
 >>>>>>> [chore] Add tests
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
@@ -113,7 +113,7 @@ exports[`App component renders properly 1`] = `
         path="/categories/:category_id/recipes/:id"
 >>>>>>> [chore] Add tests
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
 <<<<<<< HEAD
