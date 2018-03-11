@@ -23,23 +23,11 @@ class AddCategory extends Component {
         this.setState({[name]: value});
     }
 
-    // mount token when page loads
-    componentDidMount() {
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
-    }
-
     // handle add category request
     handleAddcategory = (event) => {
     const payload = new FormData()
     payload.set('name', this.state.name)    
     payload.set('desc', this.state.desc,)
-    const token = window.localStorage.getItem('token')
-    if (!token) {
-        window.location.replace('/login')
-    }
         
         // send POST request to API
         axiosInstance.post('category', payload)

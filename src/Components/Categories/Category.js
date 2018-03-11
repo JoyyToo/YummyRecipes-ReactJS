@@ -32,21 +32,14 @@ class Category extends Component {
 
     // handle get category request
     handleCategory = (page=1) => {
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
         // send GET request to API
         axiosInstance.get(`category?page=${page}`)
 
             .then((response) => {
-                let category = response.data[1];
-                let paginationObject = response.data[0];
-
                 this.setState({
                     data: response.data,
-                    categories: category, 
-                    pagination: paginationObject         
+                    categories: response.data[1], 
+                    pagination: response.data[0]         
                 })
             })
             .catch((error) => {
