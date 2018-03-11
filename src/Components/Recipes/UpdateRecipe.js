@@ -31,10 +31,6 @@ class UpdateRecipe extends Component {
     getRecipe() {
         const id = this.props.match.params['id'];
         const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes/${id}`)

@@ -34,23 +34,16 @@ class Recipe extends Component {
     // handle get recipe request
     handleRecipe = (page=1) => {
         const category_id = this.props.match.params['category_id'];
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
 
         // send GET request to API
         axiosInstance.get(`category/${category_id}/recipes?page=${page}`)
             .then((response) => {
-                let recipe = response.data[1];
-                let paginationObject = response.data[0];
-
                 this.setState({
                     data: response.data,
-                    recipes: recipe,
+                    recipes: response.data[1],
                     id: this.state.id,
                     category_id: this.state.category_id,
-                    pagination: paginationObject
+                    pagination: response.data[0]
                 })
             })
 

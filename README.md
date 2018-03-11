@@ -33,6 +33,11 @@ npm start
 npm test
 ```
 
+## Test coverage
+```
+npm test -- -coverage
+```
+
 # Screenshots
 ## Landing Page
 <img width="1400" alt="screen shot 2018-03-10 at 13 02 56" src="https://user-images.githubusercontent.com/27849036/37241110-e0bcc188-2464-11e8-93a1-7a21df1442f2.png">

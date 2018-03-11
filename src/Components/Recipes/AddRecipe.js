@@ -27,14 +27,6 @@ class AddRecipe extends Component {
         this.setState({[name]: value});
     }
 
-    // mount token when page loads
-    componentDidMount() {
-        const token = window.localStorage.getItem('token');
-        if (!token) {
-            window.location.replace('/login')
-        }
-    }
-
     // handle add recipe request
     handleAddRecipe = (event) => {
         const category_id = this.props.match.params['category_id'];
@@ -44,10 +36,6 @@ class AddRecipe extends Component {
         payload.set('ingredients', this.state.ingredients,)
         payload.set('procedure', this.state.procedure,)
         
-        const token = window.localStorage.getItem('token')
-        if (!token) {
-            window.location.replace('/login')
-        }
             // send POST request to API
             axiosInstance.post(`category/${category_id}/recipes`, payload)
             .then((response) => {
