@@ -6,7 +6,6 @@ jest.mock('react-dom', ()=> ({render: jest.fn()}))
 import App from '../App.js'
 import Index from '../index.js'
 
-
 describe('Index component', () => {
   
     it('renders without crashing', () => {

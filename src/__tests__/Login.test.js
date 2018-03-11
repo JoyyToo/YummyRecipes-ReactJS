@@ -6,6 +6,7 @@ import Login from '../Components/Auth/Login'
 
 describe('Login component', () => {
     const wrapper = shallow(<Login />);
+    const preventDefault = jest.fn();
   
     it('renders properly', () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -14,6 +15,7 @@ describe('Login component', () => {
     it('renders 1 <Login/> component', () =>{
         const component = shallow(<Login/>);
         expect(component).toHaveLength(1);
+        expect(component.instance().handleLogin( {preventDefault} )) 
     });
 
     it('it returns props correctly', () =>{

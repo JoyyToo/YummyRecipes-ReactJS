@@ -13,6 +13,7 @@ describe('SingleCategory component', () => {
         }
     }
     const wrapper = shallow(<SingleCategory match={{params}}/>);
+    const preventDefault = jest.fn();
 
     it('renders properly', () => {
         expect(shallowToJson(wrapper)).toMatchSnapshot();
@@ -21,6 +22,7 @@ describe('SingleCategory component', () => {
     it('renders 1 <SingleCategory/> component', () =>{
         const component = shallow(<SingleCategory match={{params}}/>);
         expect(component).toHaveLength(1);
+        expect(wrapper.instance().handleCategory( {preventDefault} ))
     });
   
     it('it returns props correctly', () =>{

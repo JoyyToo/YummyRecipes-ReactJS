@@ -4,7 +4,6 @@ import toJson, { shallowToJson } from 'enzyme-to-json';
 
 import Landing from '../Components/Landing';
 
-
 describe('Landing component', () => {
   const wrapper = shallow(<Landing />);
 

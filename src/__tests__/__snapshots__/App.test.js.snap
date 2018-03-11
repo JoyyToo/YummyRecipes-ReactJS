@@ -28,42 +28,42 @@ exports[`App component renders properly 1`] = `
         exact={true}
         path="/newpassword/:token"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:id"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/addcategory"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/updatecategory/:id"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/recipes"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/addrecipe"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/recipes/:id"
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
         path="/categories/:category_id/recipe/:id"
