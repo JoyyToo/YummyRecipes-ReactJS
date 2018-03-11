@@ -6,15 +6,24 @@ import sinon from 'sinon';
 import NewPassword from '../Components/Auth/NewPassword'
 
 describe('NewPassword component', () => {
+    const params = {
+        match: {
+            params: {
+                id:1
+            }
+        }
+    }
     const wrapper = shallow(<NewPassword />);
+    const preventDefault = jest.fn();
   
     it('renders properly', () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot();
     });
 
-    it('renders 1 <AddCategory/> component', () =>{
-        const component = shallow(<NewPassword/>);
+    it('renders 1 <NewPassword/> component', () =>{
+        const component = shallow(<NewPassword match={{params}} />);
         expect(component).toHaveLength(1);
+        expect(component.instance().handleNewPassword( {preventDefault} )) 
     });
 
     it('contains MuiThemeProvider', () => {

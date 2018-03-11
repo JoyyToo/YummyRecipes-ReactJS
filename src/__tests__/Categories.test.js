@@ -12,4 +12,11 @@ describe('Categories component', () => {
       expect(shallowToJson(wrapper)).toMatchSnapshot();
     });
 
+    it('renders 1 <Category/> component', () =>{
+      expect(wrapper).toHaveLength(1);
+      expect(wrapper.instance().handleCategory( {preventDefault} ))
+      expect(wrapper.instance().handleSearch( {preventDefault} ))
+      expect(wrapper.instance().button( {preventDefault} )) 
+  });
+
 })
