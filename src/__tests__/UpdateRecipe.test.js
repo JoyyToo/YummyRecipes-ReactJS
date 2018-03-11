@@ -13,6 +13,7 @@ describe('UpdateRecipe  component', () => {
         }
     }
     const wrapper = shallow(<UpdateRecipe  match={{params}}/>);
+    const preventDefault = jest.fn();
     it('renders properly', () => {
         expect(shallowToJson(wrapper)).toMatchSnapshot();
       });
@@ -20,6 +21,8 @@ describe('UpdateRecipe  component', () => {
     it('renders 1 <UpdateRecipe/> component', () =>{
         const component = shallow(<UpdateRecipe match={{params}}/>);
         expect(component).toHaveLength(1);
+        expect(wrapper.instance().getRecipe( {preventDefault} ))
+        expect(wrapper.instance().handleEditRecipe( {preventDefault} ))
     });
   
     it('it returns props correctly', () =>{

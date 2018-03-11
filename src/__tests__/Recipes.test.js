@@ -20,7 +20,9 @@ describe('Recipes component', () => {
     });
 
     it('it renders handleRecipe correctly', () =>{
-        expect(wrapper.instance().handleRecipe( {preventDefault} ))    
+        expect(wrapper.instance().handleRecipe( {preventDefault} ))
+        expect(wrapper.instance().handleSearch( {preventDefault} ))
+        expect(wrapper.instance().button( {preventDefault} )) 
     });
 
     it('it renders handleInputChange correctly', () =>{

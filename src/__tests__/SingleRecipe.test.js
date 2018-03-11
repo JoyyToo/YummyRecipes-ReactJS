@@ -13,6 +13,8 @@ describe('SingleRecipe component', () => {
         }
     }
     const wrapper = shallow(<SingleRecipe match={{params}}/>);
+    const preventDefault = jest.fn();
+
     it('renders properly', () => {
         expect(shallowToJson(wrapper)).toMatchSnapshot();
       });
@@ -20,6 +22,7 @@ describe('SingleRecipe component', () => {
       it('renders 1 <SingleRecipe/> component', () =>{
           const component = shallow(<SingleRecipe match={{params}}/>);
           expect(component).toHaveLength(1);
+          expect(wrapper.instance().handleRecipe( {preventDefault} ))
       });
   
       it('it returns props correctly', () =>{
