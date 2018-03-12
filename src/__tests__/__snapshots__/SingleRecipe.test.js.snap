@@ -71,22 +71,8 @@ exports[`SingleRecipe component renders properly 1`] = `
                   }
                 >
                   <i>
-                    Created:
+                    Created: 
                   </i>
-                   
-                </p>
-                <p
-                  style={
-                    Object {
-                      "marginBottom": 30,
-                      "marginLeft": 15,
-                    }
-                  }
-                >
-                  <i>
-                    Modified:
-                  </i>
-                   
                 </p>
               </div>
             </CardText>

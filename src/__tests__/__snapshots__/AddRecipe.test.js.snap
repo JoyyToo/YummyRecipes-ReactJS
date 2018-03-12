@@ -28,7 +28,7 @@ exports[`AddRecipe component renders properly 1`] = `
         zDepth={2}
       >
         <p
-          class="heading"
+          className="heading"
         >
           <b>
             ADD RECIPE

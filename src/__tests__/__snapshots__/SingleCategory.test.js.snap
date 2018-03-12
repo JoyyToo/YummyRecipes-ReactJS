@@ -49,21 +49,8 @@ exports[`SingleCategory component renders properly 1`] = `
                   }
                 >
                   <i>
-                    Created:
+                    Created: 
                   </i>
-                   
-                </p>
-                <p
-                  style={
-                    Object {
-                      "marginLeft": 15,
-                    }
-                  }
-                >
-                  <i>
-                    Modified:
-                  </i>
-                   
                 </p>
               </div>
             </CardText>
