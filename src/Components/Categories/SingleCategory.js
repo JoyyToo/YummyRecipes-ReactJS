@@ -1,142 +1,147 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardText,} from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import {Link} from 'react-router-dom';
-import {notify} from 'react-notify-toast'
+import { Link } from 'react-router-dom';
+import { notify } from 'react-notify-toast';
 import axiosInstance from '../Constants/AxiosCall';
 
 class SingleCategory extends Component {
-    // initialize state
-    constructor(props) {
-        super(props);
-        this.state = {
-            categories: [],
-            id: "",
-            date_created: '',
-            date_modified: '',
-            desc: '',
-            name: '',
+  // initialize state
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: '',
+      date_created: '',
+      desc: '',
+      name: '',
 
-        }
-    }
+    };
+  }
 
-    // handle get category request
-    handleCategory = (event) => {
-        const id = this.props.match.params['id'];
+  // mount get category component on page load
+  componentDidMount() {
+    this.handleCategory();
+  }
 
-        // send GET request to API
-        axiosInstance.get(`category/${id}`)
+  // handle get category request
+  handleCategory = () => {
+    const id = this.props.match.params['id'];
 
-        .then((response) => {
-            let categories = response.data['category'];
-            this.setState({
-                date_created: categories['date_created'],
-                date_modified: categories['date_modified'],
-                desc: categories['desc'],
-                name: categories['name'],
-                id: categories['id'],
-            })
-        })
+    // send GET request to API
+    axiosInstance.get(`category/${id}`)
 
-        .catch((error) => {
-            notify.show(error.response, 'error', 4000);
+      .then((response) => {
+        const categories = response.data['category'];
+        this.setState({
+          date_created: categories['date_created'],
+          desc: categories['desc'],
+          name: categories['name'],
+          id: categories['id'],
         });
-    };
+      })
 
-    // handle delete category request
-    handleDeleteCategory = (event) => {
-        let id = event.currentTarget.getAttribute('id');
+      .catch((error) => {
+        notify.show(error.response, 'error', 4000);
+      });
+  };
 
-        // send DELETE request to API
-        axiosInstance.delete(`category/${id}`)
+  // handle delete category request
+  handleDeleteCategory = (event) => {
+    const id = event.currentTarget.getAttribute('id');
 
-            .then((response) => {
-                this.handleCategory();
-                notify.show(response.data.message, 'success', 4000);
-                this.setState({
-                    id: this.state.id
-                });
-                this.props
-                    .history
-                    .push('/categories');
-            })
+    // send DELETE request to API
+    axiosInstance.delete(`category/${id}`)
 
-            .catch((error) => {
-                notify.show(error.response.data.message, 'error', 4000);
-            });
-    };
-
-    // mount get category component on page load
-    componentDidMount() {
+      .then((response) => {
         this.handleCategory();
-    }
+        notify.show(response.data.message, 'success', 4000);
+        this.setState({
+          id: this.state.id,
+        });
+        this.props
+          .history
+          .push('/categories');
+      })
 
-    // render a single category
-    render() {
-        let category = this.state;
+      .catch((error) => {
+        notify.show(error.response.data.message, 'error', 4000);
+      });
+  };
 
-        const styles = {
-            card2: {
-                position: 'relative',
-                padding: 10,
-                width: 450,
-                float: 'left',
-                margin: 5,
+  // render a single category
+  render() {
+    const category = this.state;
 
-            },
-            align: {
-                align: 'left'
+    const styles = {
+      card2: {
+        position: 'relative',
+        padding: 10,
+        width: 450,
+        float: 'left',
+        margin: 5,
 
-            }
-        };
-        return (
-            <div>
-                <MuiThemeProvider>
+      },
+      align: {
+        align: 'left',
 
-                    <div>
-                        {(
-                            <div style={styles.card2}>
-                                <MuiThemeProvider is="nospace start">
-                                    <Card >
-                                        <h2 style={{marginLeft: 30, paddingTop: 10}}>{category['name']}</h2>
-                                        <p style={{marginLeft: 30, marginBottom: 30}}>{category['desc']}</p>
-                                        <CardText>
-                                            {
-                                                <div>
+      },
+    };
+    return (
+      <div>
+        <MuiThemeProvider>
 
-                                                    <p style={{marginLeft: 15}}><i>Created:</i> {this.state.date_created}</p>
-                                                    <p style={{marginLeft: 15}}><i>Modified:</i> {this.state.date_modified}</p>
+          <div>
+            {(
+              <div style={styles.card2}>
+                <MuiThemeProvider is="nospace start">
+                  <Card >
+                    <h2 style={{ marginLeft: 30, paddingTop: 10 }}>{category['name']}</h2>
+                    <p style={{ marginLeft: 30, marginBottom: 30 }}>{category['desc']}</p>
+                    <CardText>
+                      {
+                        <div>
 
-                                                </div>
+                          <p style={{ marginLeft: 15 }}><i>Created: </i>
+                            {this.state.date_created}
+                          </p>
 
-                                            }
-                                        </CardText>
-                                        <Link to={"/updatecategory/" + category['id']}>
-                                            <FlatButton label="Edit"
-                                                        id={category['id']} desc={category['desc']}
-                                                        primary={true}/></Link>
-                                        <FlatButton label="Delete" style={{color: 'red'}}
-                                                    id={category['id']}
-                                                    onClick={this.handleDeleteCategory.bind(this)}
-                                        />
+                        </div>
 
-                                        <Link to={"/categories/" + category['id'] + "/recipes"}><FlatButton
-                                                label="RECIPES"/></Link><br/>
-                                    </Card>
+                      }
+                    </CardText>
+                    <Link to={`/updatecategory/${category['id']}`}>
+                      <FlatButton
+                        label="Edit"
+                        id={category['id']}
+                        desc={category['desc']}
+                        primary={true}
+                      />
+                    </Link>
+                    <FlatButton
+                      label="Delete"
+                      style={{ color: 'red' }}
+                      id={category['id']}
+                      onClick={this.handleDeleteCategory.bind(this)}
+                    />
 
-                                </MuiThemeProvider>
-                            </div>
-                        )}
-                    </div>
+                    <Link to={`/categories/${category['id']}/recipes`}>
+                      <FlatButton
+                        label="RECIPES"
+                      />
+                    </Link><br />
+                  </Card>
 
                 </MuiThemeProvider>
-            </div>
+              </div>
+            )}
+          </div>
 
-        )
-    }
+        </MuiThemeProvider>
+      </div>
 
-};
+    );
+  }
+}
 
 export default SingleCategory;
-

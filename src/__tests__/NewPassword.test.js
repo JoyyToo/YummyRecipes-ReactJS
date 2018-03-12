@@ -1,9 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
-import sinon from 'sinon';
 
-import NewPassword from '../Components/Auth/NewPassword'
+import NewPassword from '../Components/Auth/NewPassword';
 
 describe('NewPassword component', () => {
     const params = {

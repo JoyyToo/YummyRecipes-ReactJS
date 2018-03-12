@@ -28,7 +28,7 @@ exports[`UpdateRecipe  component renders properly 1`] = `
         zDepth={2}
       >
         <p
-          class="heading"
+          className="heading"
         >
           <b>
             UPDATE RECIPE
@@ -129,7 +129,7 @@ exports[`UpdateRecipe  component renders properly 1`] = `
           </button>
           <Link
             replace={false}
-            to="/categories//recipe/"
+            to="/categories//recipe/\\""
           >
             <button
               className="network"

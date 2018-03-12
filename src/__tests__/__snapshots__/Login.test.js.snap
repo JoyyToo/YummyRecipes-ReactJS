@@ -269,7 +269,7 @@ exports[`Login component renders properly 1`] = `
             </button>
           </Link>
           <p>
-            Don't have an account? 
+            Do not have an account? 
             <Link
               id="button"
               replace={false}
