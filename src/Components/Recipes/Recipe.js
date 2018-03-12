@@ -65,7 +65,7 @@ class Recipe extends Component {
     };
 
     // call handle recipe before mounting
-    componentWillMount() {
+    componentDidMount() {
         this.handleRecipe();
     }
 
