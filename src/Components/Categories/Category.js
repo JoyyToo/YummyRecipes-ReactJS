@@ -49,8 +49,8 @@ class Category extends Component {
             });
     };
 
-    // components mounted when page is loaded
-    componentWillMount() {
+    // fetch category data
+    componentDidMount() {
         this.handleCategory()
     }
 
