@@ -11,7 +11,6 @@ exports[`Nav component renders properly 1`] = `
   >
     <h2>
       YUMMY
-                  
     </h2>
   </Link>
 </div>
