@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import toJson, { shallowToJson } from 'enzyme-to-json';
+import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
 import Landing from '../Components/Landing';
 
@@ -38,5 +38,4 @@ describe('Landing component', () => {
   it('contains Link', () => {
     expect(wrapper.find('Link')).toHaveLength(2);
   });
-
-})
+});

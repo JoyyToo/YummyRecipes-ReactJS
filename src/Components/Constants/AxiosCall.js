@@ -3,7 +3,7 @@ import axios from 'axios';
 // create an instance of axios
 const axiosInstance = axios.create({
   baseURL: 'https://yummy-recipe-flaskapi.herokuapp.com/api/v1',
-  headers: { 
+  headers: {
     'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
 });
 

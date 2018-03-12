@@ -1,34 +1,134 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardText} from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
+import AutoComplete from 'material-ui/AutoComplete';
 import FlatButton from 'material-ui/FlatButton';
-import {Link} from 'react-router-dom';
-import {notify} from 'react-notify-toast';
+import { Link } from 'react-router-dom';
+import { notify } from 'react-notify-toast';
 import axiosInstance from '../Constants/AxiosCall';
 import Pagination from '../Pagination/PaginationApp';
-import AutoComplete from 'material-ui/AutoComplete';
 
 class Recipe extends Component {
-    // initialize state
-    constructor(props) {
-        super(props);
-        this.state = {
-            pagination: "",
-            recipes: [],
-            data: "",
-            category_id: "",
-            id: "",
-            q: "",
+  // initialize state
+  constructor(props) {
+    super(props);
+    this.state = {
+      pagination: '',
+      recipes: [],
+      category_id: '',
+      id: '',
+      q: '',
 
+    };
+  }
+
+  // call handle recipe before mounting
+  componentDidMount() {
+    this.handleRecipe();
+  }
+
+  // handle user input
+  handleInputChange = (event) => {
+    this.setState({ q: event });
+  };
+
+  // handle get recipe request
+  handleRecipe = (page = 1) => {
+    const categoryid = this.props.match.params['category_id'];
+
+    // send GET request to API
+    axiosInstance.get(`category/${categoryid}/recipes?page=${page}`)
+      .then((response) => {
+        this.setState({
+          recipes: response.data[1],
+          id: this.state.id,
+          category_id: this.state.category_id,
+          pagination: response.data[0],
+        });
+      })
+
+      .catch((error) => {
+        if (error.response) {
+          notify.show(error.response.data.message, 'error', 4000);
         }
+      });
+  };
+
+  // handle delete recipe request
+  handleDeleteRecipe = (event) => {
+    const id = event.currentTarget.getAttribute('id');
+    const categoryid = this.props.match.params['category_id'];
+
+    // send DELETE request to API
+    axiosInstance.delete(`category/${categoryid}/recipes/${id}`)
+      .then((response) => {
+        this.handleRecipe();
+        notify.show(response.data.message, 'success', 4000);
+        this.setState({
+          id: this.state.id,
+        });
+        this.props
+          .history
+          .push(`/categories/${categoryid}/recipes`);
+      })
+      .catch((error) => {
+        notify.show(error.response, 'error', 4000);
+      });
+  };
+
+  // handle search recipe request
+  handleSearch = () => {
+    const categoryid = this.props.match.params['category_id'];
+
+    // send GET request to API
+    axiosInstance.get(`category/${categoryid}/recipes?q=${this.state.q}`)
+      .then((response) => {
+        const recipe = response.data['recipes'];
+        this.setState({
+          q: '',
+          recipes: recipe,
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          notify.show(error.response.data.message, 'error', 4000);
+        }
+      });
+  };
+
+  // validate pagination
+  button() {
+    const recipe = this.state.recipes;
+
+    if (recipe !== '') {
+      if (this.state.pagination['current page'] === 1) {
+        if (recipe.length > 5) {
+          return (
+            <footer>
+              <Pagination className="page" changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination} />
+            </footer>
+          );
+        }
+      } else if (this.state.pagination['current page'] !== 1) {
+        if (recipe.length >= 1) {
+          return (
+            <footer>
+              <Pagination className="page" changePage={this.handleRecipe.bind(this)} paginationObject={this.state.pagination} />
+            </footer>
+          );
+        }
+      }
     }
+  }
 
-    // handle user input
-    handleInputChange = (event) => {
-        this.setState({q: event});    
+  // render recipes
+  render() {
+    const recipe = this.state.recipes;
 
+    const style = {
+      marginLeft: 20,
     };
 
     // handle get recipe request
@@ -64,10 +164,10 @@ class Recipe extends Component {
             });
     };
 
-    // call handle recipe before mounting
-    componentDidMount() {
-        this.handleRecipe();
-    }
+      },
+      align: {
+        align: 'left',
+      
 
     // handle delete recipe request
     handleDeleteRecipe = (event) => {
@@ -176,58 +276,30 @@ class Recipe extends Component {
                             paddingLeft: 20                  
                             }}
                         />
-                    </div>
+                      </Link>
+                      <FlatButton
+                        label="Delete"
+                        style={{ color: 'red' }}
+                        category_id={recipe[key]['category_id']}
+                        id={recipe[key]['id']}
+                        onClick={(event => this.handleDeleteRecipe(event))}
+                      />
+                    </Card>
 
-                    <div>
-                        
-                        {
+                  </MuiThemeProvider>
 
-                            Object.keys(recipe).map((key) => (
-                                <div style={styles.card2} key={key}>
-                                    <MuiThemeProvider is="nospace start">
-                                        <Card style={{height: 200}}>
-                                            <h2 style={{marginLeft: 30, 
-                                                paddingTop: 10}} >
-                                                {recipe[key]['name']}</h2>
-                                            <p style={{marginLeft: 30}}>Time: {recipe[key]['time']}</p>
-                                            <CardText>
-                                                {
+                </div>
 
-                                                }
-                                            </CardText>
+              ))}
 
-                                            <Link to={"/categories/" + recipe[key]['category_id'] + "/recipe/" + recipe[key]['id']}>
-                                            <FlatButton label="View"
-                                                        category_id={recipe[key]['category_id']}
-                                                        id={recipe[key]['id']}
-                                            /></Link>               
-                                            <Link to={"/categories/" + recipe[key]['category_id'] + "/recipes/" + recipe[key]['id']}>
-                                                <FlatButton label="Edit"
-                                                            id={recipe[key]['id']} desc={recipe[key]['desc']}
-                                                            primary={true}/></Link>
-                                            <FlatButton label="Delete" style={{'color': 'red'}}
-                                                        category_id={recipe[key]['category_id']}
-                                                        id={recipe[key]['id']}
-                                                        onClick={(event => this.handleDeleteRecipe(event))}
-                                            />
-                                        </Card>
+          </div>
 
-                                    </MuiThemeProvider>
+        </MuiThemeProvider>
+        {this.button()}
+      </div>
 
-                                </div>
-                                            
-                            ))}
-                            
-                    </div>
-
-                </MuiThemeProvider>
-                {this.button()}
-            </div>
-
-        )
-    }
-
-};
+    );
+  }
+}
 
 export default Recipe;
-

@@ -24,6 +24,7 @@ exports[`Nav component renders properly 1`] = `
       YUMMY
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                   
 =======
       <a
@@ -43,6 +44,8 @@ exports[`Nav component renders properly 1`] = `
 =======
                   
 >>>>>>> [chore] Add tests
+=======
+>>>>>>> [chore] Lint code
     </h2>
   </Link>
 </div>
