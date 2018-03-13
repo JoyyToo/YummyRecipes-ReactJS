@@ -121,15 +121,7 @@ exports[`Register component renders properly 1`] = `
               "width": 323,
             }
           }
-<<<<<<< HEAD
-<<<<<<< HEAD
           type="password"
-=======
-          type="text"
->>>>>>> [Feature 155119223]:
-=======
-          type="password"
->>>>>>> [chore] Add tests
           underlineShow={true}
           value=""
         />

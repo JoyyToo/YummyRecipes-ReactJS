@@ -26,63 +26,26 @@ exports[`App component renders properly 1`] = `
       <Route
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
-<<<<<<< HEAD
         path="/newpassword/:token"
-=======
-        path="/resetpassword"
->>>>>>> [Feature 155119223]:
       />
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
         path="/categories"
-=======
-        path="/newpassword"
->>>>>>> [Feature 155119223]:
-=======
-        path="/newpassword/:token"
->>>>>>> [chore] Add tests
       />
-      <Route
+      <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
         path="/categories/:id"
-=======
-        path="/categories"
->>>>>>> [Feature 155119223]:
       />
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
         path="/addcategory"
-=======
-        path="/categories/:id"
->>>>>>> [Feature 155119223]:
       />
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
-        path="/updatecategory/:id"
-=======
-        path="/addcategory"
->>>>>>> [Feature 155119223]:
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-<<<<<<< HEAD
-        path="/categories/:category_id/recipes"
-      />
-      <PrivateRoute
-        component={[Function]}
-        exact={true}
-        path="/categories/:category_id/addrecipe"
-=======
         path="/updatecategory/:id"
       />
       <PrivateRoute
@@ -93,41 +56,17 @@ exports[`App component renders properly 1`] = `
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
-        path="/recipes"
->>>>>>> [Feature 155119223]:
-=======
         path="/categories/:category_id/addrecipe"
->>>>>>> [chore] Add tests
       />
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
-<<<<<<< HEAD
         path="/categories/:category_id/recipes/:id"
-=======
-        path="/addrecipe"
->>>>>>> [Feature 155119223]:
-=======
-        path="/categories/:category_id/recipes/:id"
->>>>>>> [chore] Add tests
       />
       <PrivateRoute
         component={[Function]}
         exact={true}
-<<<<<<< HEAD
-<<<<<<< HEAD
         path="/categories/:category_id/recipe/:id"
-      />
-      <Route
-        component={[Function]}
-=======
-        path="/updaterecipe"
->>>>>>> [Feature 155119223]:
-=======
-        path="/categories/:category_id/recipe/:id"
->>>>>>> [chore] Add tests
       />
       <Route
         component={[Function]}
