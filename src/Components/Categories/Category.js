@@ -84,7 +84,6 @@ class Category extends Component {
       .then((response) => {
         const category = response.data['categories'];
         this.setState({
-          q: '',
           categories: category,
         });
       })
@@ -123,6 +122,11 @@ class Category extends Component {
   // render the categories
   render() {
     const category = this.state.categories;
+    if (this.state.q === '') {
+      if (!this.handleInputChange()) {
+        this.handleCategory();
+      }
+    }
 
     const style = {
       marginLeft: 20,

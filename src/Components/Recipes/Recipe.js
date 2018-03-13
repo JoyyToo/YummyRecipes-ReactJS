@@ -87,7 +87,6 @@ class Recipe extends Component {
       .then((response) => {
         const recipe = response.data['recipes'];
         this.setState({
-          q: '',
           recipes: recipe,
         });
       })
@@ -126,6 +125,11 @@ class Recipe extends Component {
   // render recipes
   render() {
     const recipe = this.state.recipes;
+    if (this.state.q === '') {
+      if (!this.handleInputChange()) {
+        this.handleRecipe();
+      }
+    }
 
     const style = {
       marginLeft: 20,
