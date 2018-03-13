@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 exports[`Landing component renders properly 1`] = `
-=======
-exports[`Landing component reanders properly 1`] = `
->>>>>>> [Feature 155119223]:
-=======
-exports[`Landing component renders properly 1`] = `
->>>>>>> [chore] Add tests
 <div
   className="App"
 >
