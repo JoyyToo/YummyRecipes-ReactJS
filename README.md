@@ -12,7 +12,7 @@ Yummy Recipes application using react library that allows a user do the followin
 - Create, update, view and delete a category.
 - Create, update, view and delete a recipe.
 
-## Testing The Application
+## Testing the Application
 ```
 $ git clone https://github.com/JoyyToo/YummyRecipes-ReactJS.git
 $ cd yummyrecipes-react
@@ -23,7 +23,7 @@ $ cd yummyrecipes-react
 $ npm install
 ```
 
-## Start The Server
+## Start the Server
 Start the server which listens at port 3000 by running the following command:
 ```
 npm start
@@ -34,7 +34,7 @@ npm start
 npm test
 ```
 
-## Test coverage
+## Test Coverage
 ```
 npm test -- --coverage
 ```
